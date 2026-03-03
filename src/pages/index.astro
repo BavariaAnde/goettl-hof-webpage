@@ -111,7 +111,7 @@ const visit = {
 				</div>
 			</div>
 			<div class="hero__photo">
-				<img src={asset("images/hof-panorama-sicht2-januar.webp")} alt="Göttl Hof im Winter" width="720" height="480" />
+				<img src={asset("images/kuh-gesicht.jpg")} alt="Kuh Nahaufnahme" width="720" height="480" />
 			</div>
 		</section>
 
@@ -204,6 +204,14 @@ const visit = {
 				</div>
 			</div>
 			<div class="training__cta">
+				<img
+					src={asset("images/kuh-mit-kalb.jpg")}
+					alt="Kuh mit Kalb im Stall"
+					loading="lazy"
+					width="360"
+					height="240"
+					class="training__cta-image"
+				/>
 				<p>Sprich uns an, erzähl kurz wer du bist – wir melden uns fix.</p>
 				<a class="btn" href="#contact">Ausbildung anfragen</a>
 			</div>
@@ -526,6 +534,14 @@ const visit = {
 		background: #f0eadc;
 		padding: 1.5rem;
 		border-radius: 1rem;
+	}
+
+	.training__cta-image {
+		width: 100%;
+		border-radius: 0.9rem;
+		object-fit: cover;
+		margin-bottom: 1rem;
+		border: 1px solid #e0d2b9;
 	}
 
 	.faq {
