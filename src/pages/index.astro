@@ -27,16 +27,23 @@ const cornerstones = [
 const equipment = [
 	{
 		title: "Zugmaschinen",
-		details: ["Fendt Vario (200er & 700er Reihe)", "Frontlader für Hofarbeiten", "Pflegebereifung für Silage"]
+		details: ["Fendt (300er & 500er Reihe)", "Telelader für Hofarbeiten", "Breitreifen für bodenschonenden Silageeinsatz"]
 	},
 	{
 		title: "Ernte & Pflege",
-		details: ["Claas Mähdrescher", "Pöttinger Schwader & Mähkombination", "Ballen- & Transporttechnik"]
+		details: ["Pöttinger Schwader", "Neue Gaspardo Drillkombination", "Ballen- & Transporttechnik"]
 	},
 	{
 		title: "Dienstleistungen",
 		details: ["Grünlandpflege & Bodenbearbeitung", "Mais-/Getreideernte", "Nachbarschaftshilfe nach Absprache"]
 	}
+];
+
+const trainingSlots = [
+	{ year: "2026", status: "belegt", note: "Platz vergeben" },
+	{ year: "2027", status: "belegt", note: "Platz vergeben" },
+	{ year: "2028", status: "belegt", note: "Platz vergeben" },
+	{ year: "2029", status: "frei", note: "Frei ab 01.08.2029" }
 ];
 
 const gallery = [
@@ -177,13 +184,24 @@ const visit = {
 				<h2>Ausbildung & Mitarbeit</h2>
 				<p>
 					Start ist jedes Jahr am <strong>1. August</strong>. Wir nehmen 1–2 Personen, die Landwirtschaft wirklich
-					lernen wollen. Eigene Projekte, Umgang mit Tieren und Maschinen, wohnen nach Absprache.
+					lernen wollen. Eigene Projekte, Umgang mit Tieren und Maschinen, wohnen nach Absprache. Aktuell sind alle
+					Plätze bis 2028 vergeben – frei wird es wieder ab 01.08.2029.
 				</p>
-				<ul>
-					<li>Ausbildungsplatz frei ab August 2026</li>
-					<li>Vor- oder Schnuppertage möglich</li>
-					<li>Bewerbung einfach per Mail oder persönlichem Gespräch</li>
-				</ul>
+				<div class="training__slots" aria-label="Ausbildungsplätze">
+					{trainingSlots.map((slot) => (
+						<div
+							class={`training__slot ${slot.status === "frei" ? "training__slot--free" : "training__slot--booked"}`}
+						>
+							<div>
+								<p class="training__slot-year">{slot.year}</p>
+								<p class="training__slot-note">{slot.note}</p>
+							</div>
+							<span class="training__slot-badge" aria-label={slot.status === "frei" ? "frei" : "belegt"}>
+								{slot.status === "frei" ? "frei" : "belegt"}
+							</span>
+						</div>
+					))}
+				</div>
 			</div>
 			<div class="training__cta">
 				<p>Sprich uns an, erzähl kurz wer du bist – wir melden uns fix.</p>
@@ -455,8 +473,53 @@ const visit = {
 		gap: 1.5rem;
 	}
 
-	.training ul {
-		padding-left: 1.2rem;
+	.training__slots {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		margin-top: 1rem;
+	}
+
+	.training__slot {
+		background: #f8f4ed;
+		border: 1px solid #eadfc9;
+		border-radius: 1rem;
+		padding: 0.9rem 1.2rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.training__slot-year {
+		margin: 0;
+		font-weight: 600;
+		font-size: 1rem;
+	}
+
+	.training__slot-note {
+		margin: 0.1rem 0 0;
+		color: #5c5a56;
+		font-size: 0.9rem;
+	}
+
+	.training__slot-badge {
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		letter-spacing: 0.1em;
+		padding: 0.35rem 0.8rem;
+		border-radius: 999px;
+		font-weight: 600;
+	}
+
+	.training__slot--booked .training__slot-badge {
+		background: #e4d7c0;
+		color: #5f574d;
+	}
+
+	.training__slot--free .training__slot-badge {
+		background: #c5e6c0;
+		color: #204419;
 	}
 
 	.training__cta {
