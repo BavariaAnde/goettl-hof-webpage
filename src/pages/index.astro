@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const baseUrl = (import.meta.env.BASE_URL ?? '').replace(/\/$/, '');
-const asset = (path) => `${baseUrl}/${path.replace(/^\/+/, '')}`;
+const baseUrl = (import.meta.env.BASE_URL ?? "").replace(/\/$/, "");
+const asset = (path) => `${baseUrl}/${path.replace(/^\/+/ , "")}`;
 
 const stats = [
-	{ label: "Milchkühe", value: "≈ 120" },
-	{ label: "Hektar", value: "85 ha" },
-	{ label: "Familie", value: "3 Generationen" },
+	{ label: "Milchkühe", value: "≈ 70" },
+	{ label: "Landwirtschaft", value: "100 ha" },
+	{ label: "Forst", value: "12 ha" },
 	{ label: "Ausbildung", value: "Start 1. August" }
 ];
 
@@ -21,6 +21,21 @@ const cornerstones = [
 		title: "Felder & Maschinen",
 		description: "Grünlandpflege, Getreide, Mais und Nachbarschaftshilfe – Technik aus Oberbubach.",
 		bullets: ["Fendt, Claas, Pöttinger", "Bodenschonende Bearbeitung", "Helfen wenn wer Hilfe braucht"]
+	}
+];
+
+const equipment = [
+	{
+		title: "Zugmaschinen",
+		details: ["Fendt Vario (200er & 700er Reihe)", "Frontlader für Hofarbeiten", "Pflegebereifung für Silage"]
+	},
+	{
+		title: "Ernte & Pflege",
+		details: ["Claas Mähdrescher", "Pöttinger Schwader & Mähkombination", "Ballen- & Transporttechnik"]
+	},
+	{
+		title: "Dienstleistungen",
+		details: ["Grünlandpflege & Bodenbearbeitung", "Mais-/Getreideernte", "Nachbarschaftshilfe nach Absprache"]
 	}
 ];
 
@@ -60,6 +75,12 @@ const faqs = [
 		answer: "Bitte vorher anklingeln – dann nehmen wir uns Zeit und du stehst niemandem im Weg."
 	}
 ];
+
+const visit = {
+	address: "Oberbubach · 94439 Roßbach",
+	googleMaps: "https://maps.google.com/maps?q=Oberbubach%2C%2094439%20Ro%C3%9Fbach&output=embed",
+	mapsLink: "https://maps.app.goo.gl/4ouS1fks4bA7Rh1s5"
+};
 ---
 <Layout
 	title="Göttl Hof – Oberbubach/ Roßbach"
@@ -120,6 +141,28 @@ const faqs = [
 			</div>
 		</section>
 
+		<section class="equipment">
+			<div>
+				<h2>Maschinen & Leistungen</h2>
+				<p>
+					Moderne Technik hilft uns, zuverlässig zu liefern – auf den eigenen Flächen wie auch bei Nachbarn. Alles
+					nach Absprache und so, dass es zu Hof und Boden passt.
+				</p>
+			</div>
+			<div class="equipment__grid">
+				{equipment.map((card) => (
+					<article>
+						<h3>{card.title}</h3>
+						<ul>
+							{card.details.map((detail) => (
+								<li>{detail}</li>
+							))}
+						</ul>
+					</article>
+				))}
+			</div>
+		</section>
+
 		<section class="gallery" aria-label="Hof Impressionen">
 			{gallery.map((shot) => (
 				<figure>
@@ -160,6 +203,30 @@ const faqs = [
 			</div>
 		</section>
 
+		<section class="visit">
+			<div class="visit__info">
+				<h2>Anfahrt & Besuch</h2>
+				<p>
+					Wir liegen direkt in <strong>{visit.address}</strong>. Melde dich kurz, bevor du losfährst – dann stellen wir
+					sicher, dass jemand Zeit hat und Hof & Tiere bereit sind.
+				</p>
+				<ul>
+					<li>Milch & Eier nur nach Anmeldung</li>
+					<li>Parken am Hof – bitte langsam anfahren</li>
+					<li>Navigation: „Göttl Hof Oberbubach"</li>
+				</ul>
+				<a class="link" href={visit.mapsLink} target="_blank" rel="noreferrer">Navigation öffnen →</a>
+			</div>
+			<div class="visit__map">
+				<iframe
+					src={visit.googleMaps}
+					loading="lazy"
+					title="Karte Oberbubach"
+					allowfullscreen
+				></iframe>
+			</div>
+		</section>
+
 		<section class="blog-contact" id="blog">
 			<div class="blog">
 				<h2>Blog & Aktuelles</h2>
@@ -176,7 +243,7 @@ const faqs = [
 			</div>
 			<div class="contact" id="contact">
 				<h2>Kontakt & Direktvermarktung</h2>
-				<p>Oberbubach  · 94333 Roßbach – genaue Wegbeschreibung nach Anfrage</p>
+				<p>{visit.address} – genaue Wegbeschreibung nach Anfrage</p>
 				<ul>
 					<li>Mail: info@goettl-agrar.de</li>
 					<li>Telefon: +49 (0) 000 000000</li>
@@ -327,6 +394,31 @@ const faqs = [
 		color: #5c5a56;
 	}
 
+	.equipment {
+		background: #fff;
+		border-radius: 1.5rem;
+		padding: 2rem;
+		border: 1px solid #eadfc9;
+		box-shadow: 0 10px 25px rgba(18, 23, 17, 0.05);
+	}
+
+	.equipment__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 1rem;
+		margin-top: 1.5rem;
+	}
+
+	.equipment__grid article {
+		background: #f8f4ed;
+		border-radius: 1rem;
+		padding: 1.2rem;
+	}
+
+	.equipment__grid ul {
+		padding-left: 1.2rem;
+	}
+
 	.gallery {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -392,6 +484,28 @@ const faqs = [
 		padding: 1rem;
 	}
 
+	.visit {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 1.5rem;
+		background: #fff;
+		border-radius: 1.5rem;
+		padding: 2rem;
+		border: 1px solid #eadfc9;
+	}
+
+	.visit__info ul {
+		padding-left: 1.2rem;
+		color: #5a564f;
+	}
+
+	.visit__map iframe {
+		width: 100%;
+		border: none;
+		height: 280px;
+		border-radius: 1rem;
+	}
+
 	.blog-contact {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
@@ -452,17 +566,10 @@ const faqs = [
 	}
 
 	@media (max-width: 900px) {
-		.cornerstones {
-			grid-template-columns: 1fr;
-		}
-
-		.blog-contact {
-			grid-template-columns: 1fr;
-		}
-
+		.cornerstones,
+		.blog-contact,
 		.training {
 			grid-template-columns: 1fr;
 		}
 	}
 </style>
-
