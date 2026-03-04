@@ -55,6 +55,29 @@ const gallery = [
 	{ title: "Mähdrescher in Aktion", image: asset("images/mähdrescher.webp") }
 ];
 
+const seasons = [
+	{
+		title: "Frühjahr",
+		timeframe: "März – Mai",
+		tasks: ["Böden lockern & nachsäen", "Sensoren & Stalltechnik warten", "Jungvieh auf die Weiden vorbereiten"]
+	},
+	{
+		title: "Sommer",
+		timeframe: "Juni – August",
+		tasks: ["Grünlandpflege & Heu einbringen", "Maisbestand kontrollieren", "Nachbarschaftshilfe mit Maschinen"]
+	},
+	{
+		title: "Herbst",
+		timeframe: "September – November",
+		tasks: ["Mais- und Getreideernte", "Silagen anlegen", "Felder für den Winter vorbereiten"]
+	},
+	{
+		title: "Winter",
+		timeframe: "Dezember – Februar",
+		tasks: ["Ruhe im Stall & Kälberbetreuung", "Maschinenservice", "Planung fürs nächste Ausbildungsjahr"]
+	}
+];
+
 const posts = [
 	{
 		title: "Was sich 2026 verändert",
@@ -179,6 +202,26 @@ const visit = {
 			))}
 		</section>
 
+		<section class="seasons" aria-label="Unser Jahr am Hof">
+			<div class="seasons__intro">
+				<h2>Unser Jahr am Hof</h2>
+				<p>Was wann passiert? Ein schneller Überblick über Feldarbeit, Stall und Zeiten, in denen wir besonders gut erreichbar sind.</p>
+			</div>
+			<div class="seasons__grid">
+				{seasons.map((season) => (
+					<article>
+						<p class="seasons__timeframe">{season.timeframe}</p>
+						<h3>{season.title}</h3>
+						<ul>
+							{season.tasks.map((task) => (
+								<li>{task}</li>
+							))}
+						</ul>
+					</article>
+				))}
+			</div>
+		</section>
+
 		<section class="training" id="ausbildung">
 			<div>
 				<h2>Ausbildung & Mitarbeit</h2>
@@ -274,6 +317,14 @@ const visit = {
 					<li>Mail: info@goettl-agrar.de</li>
 					<li>Telefon: +49 (0) 000 000000</li>
 				</ul>
+				<div class="contact__cta">
+					<p>Am besten erreichbar täglich zwischen 18 und 20 Uhr.</p>
+					<div class="contact__cta-buttons">
+						<a class="btn contact__cta-btn" href="tel:+49000000000">Anrufen</a>
+						<a class="btn contact__cta-btn contact__cta-btn--outline" href="mailto:info@goettl-agrar.de">Mail schreiben</a>
+						<a class="btn contact__cta-btn contact__cta-btn--whatsapp" href="https://wa.me/49000000000" target="_blank" rel="noreferrer">WhatsApp</a>
+					</div>
+				</div>
 				<form>
 					<input type="text" placeholder="Name" />
 					<input type="email" placeholder="E-Mail" />
@@ -471,6 +522,45 @@ const visit = {
 		color: #4a4a44;
 	}
 
+	.seasons {
+		background: #fff;
+		border-radius: 1.5rem;
+		padding: 2rem;
+		border: 1px solid #eadfc9;
+		box-shadow: 0 10px 25px rgba(18, 23, 17, 0.05);
+	}
+
+	.seasons__intro {
+		max-width: 520px;
+		margin-bottom: 1.5rem;
+	}
+
+	.seasons__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
+	}
+
+	.seasons__grid article {
+		background: #f8f4ed;
+		border-radius: 1rem;
+		padding: 1.2rem;
+		border: 1px solid #eadfc9;
+	}
+
+	.seasons__timeframe {
+		margin: 0;
+		font-size: 0.85rem;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: #5f6c58;
+	}
+
+	.seasons__grid ul {
+		padding-left: 1.1rem;
+		color: #5c5a56;
+	}
+
 	.training {
 		background: #fff;
 		border-radius: 1.5rem;
@@ -630,6 +720,37 @@ const visit = {
 		display: flex;
 		flex-direction: column;
 		gap: 0.7rem;
+	}
+
+	.contact__cta {
+		margin: 1rem 0;
+		background: #f8f4ed;
+		border: 1px solid #eadfc9;
+		border-radius: 1rem;
+		padding: 1rem 1.2rem;
+	}
+
+	.contact__cta-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		margin-top: 0.8rem;
+	}
+
+	.contact__cta-btn {
+		flex: 1 1 140px;
+		text-align: center;
+	}
+
+	.contact__cta-btn--outline {
+		background: transparent;
+		border: 1px solid #cfa962;
+		color: #cfa962;
+	}
+
+	.contact__cta-btn--whatsapp {
+		background: #25d366;
+		color: #103a1d;
 	}
 
 	.contact input,
