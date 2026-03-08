@@ -490,21 +490,34 @@ const seasonMeta = [
 /* ============================================================
    DARK TOGGLE INSIDE NAV
    ============================================================ */
-:global(#darkToggle) {
-	position: static;
-	top: auto; right: auto; z-index: auto;
-	box-shadow: none;
-	padding: 0.4rem 0.6rem;
-	background: transparent;
+.nav__actions {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	order: 2;
+}
+
+.nav__dark-toggle {
 	border: 1px solid var(--border);
+	background: transparent;
 	border-radius: 999px;
-	cursor: pointer;
-	font-size: 1rem;
+	padding: 0.35rem 0.75rem;
+	min-height: 36px;
+	font-size: 0.95rem;
 	line-height: 1;
 	color: var(--text);
-	transition: background 0.2s;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
 }
-:global(#darkToggle):hover { background: var(--bg-soft); }
+
+.nav__dark-toggle:hover { background: var(--bg-soft); }
+
+.nav__dark-toggle .toggle-icon--dark { display: none; }
+html.dark .nav__dark-toggle .toggle-icon--light { display: none; }
+html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 
 /* ============================================================
    STICKY NAVIGATION
