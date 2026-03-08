@@ -152,7 +152,7 @@ const seasonMeta = [
 	<nav class="site-nav" aria-label="Hauptnavigation">
 		<div class="nav__inner">
 			<a class="nav__brand" href="#hof-top" aria-label="Göttl Hof – zurück zum Seitenanfang">
-				<svg class="nav__brand-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+				<img src="/favicon.svg" class="nav__brand-icon" width="28" height="28" alt="" aria-hidden="true" />
 				<span class="nav__brand-name">Göttl Hof</span>
 			</a>
 
@@ -562,12 +562,9 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 }
 
 .nav__brand-icon {
-	width: 22px; height: 22px;
-	vertical-align: middle;
-	filter: invert(35%) sepia(50%) saturate(500%) hue-rotate(90deg);
-}
-:global(html.dark) .nav__brand-icon {
-	filter: invert(70%) sepia(30%) saturate(400%) hue-rotate(90deg);
+	width: 26px;
+	height: 26px;
+	display: block;
 }
 
 .nav__links {
