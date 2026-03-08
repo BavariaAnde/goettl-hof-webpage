@@ -325,17 +325,43 @@ const visit = {
 						<a class="btn contact__cta-btn contact__cta-btn--whatsapp" href="https://wa.me/491605925821" target="_blank" rel="noreferrer">WhatsApp</a>
 					</div>
 				</div>
-				<form>
-					<input type="text" placeholder="Name" />
-					<input type="email" placeholder="E-Mail" />
-					<textarea rows="4" placeholder="Worum geht's? Ausbildung, Maschinenhilfe, Besuch?"></textarea>
-					<button class="btn" type="button">Nachricht senden</button>
+				<form id="contactForm">
+					<input id="contactName" name="name" type="text" placeholder="Name" />
+					<input id="contactEmail" name="email" type="email" placeholder="E-Mail" />
+					<textarea id="contactMessage" name="message" rows="4" placeholder="Worum geht's? Ausbildung, Maschinenhilfe, Besuch?"></textarea>
+					<button class="btn" type="submit">Nachricht senden</button>
 				</form>
-				<small>Bitte gib an, wann du Zeit hast – dann planen wir dich fix ein.</small>
+				<small id="contactFormHint">Bitte gib an, wann du Zeit hast – dann planen wir dich fix ein.</small>
 			</div>
 		</section>
 	</main>
 </Layout>
+
+<script>
+	if (typeof document !== 'undefined') {
+		const form = document.getElementById('contactForm');
+		const hint = document.getElementById('contactFormHint');
+		form?.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const name = (document.getElementById('contactName')?.value || '').trim();
+			const email = (document.getElementById('contactEmail')?.value || '').trim();
+			const message = (document.getElementById('contactMessage')?.value || '').trim();
+			const subject = name ? `Kontakt von ${name}` : 'Kontakt vom Hof-Formular';
+			const bodyParts = [
+				name ? `Name: ${name}` : null,
+				email ? `E-Mail: ${email}` : null,
+				message ? '' : null,
+				message || null
+			].filter(Boolean);
+			const body = encodeURIComponent(bodyParts.join('\n\n'));
+			const mailto = `mailto:info@goettl-oberbubach.de?subject=${encodeURIComponent(subject)}&body=${body}`;
+			window.location.href = mailto;
+			if (hint) {
+				hint.textContent = 'Dein Mailprogramm sollte sich öffnen – falls nicht, schreib direkt an info@goettl-oberbubach.de.';
+			}
+		});
+	}
+</script>
 
 <style>
 	:global(body) {
