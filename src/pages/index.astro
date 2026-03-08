@@ -78,16 +78,39 @@ const seasons = [
 	}
 ];
 
+const statusBoard = [
+	{ label: "In Arbeit", issue: "#10 Team-Steckbrief", note: "Designphase läuft" },
+	{ label: "Wartet", issue: "#11 Direktverkauf FAQ", note: "Freigabe offen" },
+	{ label: "Live", issue: "#8 Kontakt-CTA", note: "seit 04.03. online" }
+];
+
 const posts = [
 	{
-		title: "Was sich 2026 verändert",
-		date: "Blog folgt",
-		summary: "Aktuelles aus Stall & Feld – wir füllen das, sobald die ersten Beiträge stehen."
+		title: "Hofchronik 2025 – was sich alles getan hat",
+		date: "12. Februar 2026",
+		category: "Hofleben",
+		readTime: "4 Min.",
+		status: "Entwurf in Bearbeitung",
+		summary: "Neue Silos, mehr Sensoren im Stall und warum wir auf Heu aus eigener Ernte setzen.",
+		link: "#chronik"
 	},
 	{
-		title: "Fragen zur Ausbildung?",
-		date: "Ab August",
-		summary: "Kurz erklärt, wie du Teil vom Hof wirst und was dich erwartet."
+		title: "Ausbildungsplätze: 2026 vergeben, 2027 Warteliste",
+		date: "28. Januar 2026",
+		category: "Ausbildung",
+		readTime: "3 Min.",
+		status: "Veröffentlicht",
+		summary: "Ein Blick hinter die Kulissen des Auswahlprozesses und was Bewerber erwarten können.",
+		link: "#ausbildung-blog"
+	},
+	{
+		title: "Neue Technik für die Felder",
+		date: "05. Dezember 2025",
+		category: "Maschinen",
+		readTime: "2 Min.",
+		status: "Live",
+		summary: "Warum der neue Schwader & die Drillkombi unseren Alltag erleichtern.",
+		link: "#maschinen-blog"
 	}
 ];
 
@@ -126,7 +149,7 @@ const visit = {
 					Kein Shop, kein ChiChi – einfach anrufen oder schreiben.
 				</p>
 				<div class="hero__actions">
-					<a class="btn" href="#contact">Kontakt aufnehmen</a>
+					<a class="btn btn--primary" href="#contact">Kontakt aufnehmen</a>
 					<a class="link" href="#ausbildung">Ausbildung ab 1. August →</a>
 				</div>
 				<div class="hero__note">
@@ -256,7 +279,7 @@ const visit = {
 					class="training__cta-image"
 				/>
 				<p>Sprich uns an, erzähl kurz wer du bist – wir melden uns fix.</p>
-				<a class="btn" href="#contact">Ausbildung anfragen</a>
+				<a class="btn btn--primary" href="#contact">Ausbildung anfragen</a>
 			</div>
 		</section>
 
@@ -284,7 +307,10 @@ const visit = {
 					<li>Parken am Hof – bitte langsam anfahren</li>
 					<li>Navigation: „Göttl Hof Oberbubach"</li>
 				</ul>
-				<a class="link" href={visit.mapsLink} target="_blank" rel="noreferrer">Navigation öffnen →</a>
+				<div class="visit__actions">
+					<a class="btn btn--primary" href={visit.mapsLink} target="_blank" rel="noreferrer">Google Maps Route</a>
+					<a class="btn btn--outline" href="https://www.komoot.com/de-de/highlight/3033657" target="_blank" rel="noreferrer">Komoot-Highlight</a>
+				</div>
 			</div>
 			<div class="visit__map">
 				<iframe
@@ -296,19 +322,39 @@ const visit = {
 			</div>
 		</section>
 
+		<section class="status" aria-label="Statusboard">
+			<div class="status__intro">
+				<h2>Was passiert gerade?</h2>
+				<p>Direkter Blick auf Issues & Aufgaben – damit die Familie weiß, woran wir gerade bauen.</p>
+			</div>
+			<div class="status__grid">
+				{statusBoard.map((item) => (
+					<article>
+						<p class="status__label">{item.label}</p>
+						<h3>{item.issue}</h3>
+						<p>{item.note}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
 		<section class="blog-contact" id="blog">
 			<div class="blog">
 				<h2>Blog & Aktuelles</h2>
 				<div class="blog__cards">
-					{posts.map((post) => (
-						<article>
-							<p class="blog__date">{post.date}</p>
-							<h3>{post.title}</h3>
-							<p>{post.summary}</p>
-							<button class="link" type="button">Mehr folgt</button>
-						</article>
-					))}
-				</div>
+				{posts.map((post) => (
+					<article>
+						<p class="blog__badge">{post.category}</p>
+						<h3>{post.title}</h3>
+						<p class="blog__meta">
+							<time datetime={post.date}>{post.date}</time> · {post.readTime}
+						</p>
+						<p>{post.summary}</p>
+						<p class="blog__status">Status: {post.status}</p>
+						<a class="btn btn--outline" href={post.link}>Mehr lesen</a>
+					</article>
+				))}
+			</div>
 			</div>
 			<div class="contact" id="contact">
 				<h2>Kontakt & Rückfragen</h2>
@@ -320,16 +366,21 @@ const visit = {
 				<div class="contact__cta">
 					<p>Am besten erreichbar täglich zwischen 18 und 20 Uhr.</p>
 					<div class="contact__cta-buttons">
-						<a class="btn contact__cta-btn" href="tel:+4985641268">Anrufen</a>
-						<a class="btn contact__cta-btn contact__cta-btn--outline" href="mailto:info@goettl-oberbubach.de">Mail schreiben</a>
-						<a class="btn contact__cta-btn contact__cta-btn--whatsapp" href="https://wa.me/491605925821" target="_blank" rel="noreferrer">WhatsApp</a>
+						<a class="btn btn--primary contact__cta-btn" href="tel:+4985641268">Anrufen</a>
+						<a class="btn btn--outline contact__cta-btn" href="mailto:info@goettl-oberbubach.de">Mail schreiben</a>
+						<a class="btn btn--neutral contact__cta-btn contact__cta-btn--whatsapp" href="https://wa.me/491605925821" target="_blank" rel="noreferrer">WhatsApp</a>
 					</div>
 				</div>
-				<form id="contactForm">
-					<input id="contactName" name="name" type="text" placeholder="Name" />
-					<input id="contactEmail" name="email" type="email" placeholder="E-Mail" />
-					<textarea id="contactMessage" name="message" rows="4" placeholder="Worum geht's? Ausbildung, Maschinenhilfe, Besuch?"></textarea>
-					<button class="btn" type="submit">Nachricht senden</button>
+				<form id="contactForm" action="https://formsubmit.co/info@goettl-oberbubach.de" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="_captcha" value="false" />
+					<input type="hidden" name="_next" value="https://www.goettl-oberbubach.de/#contact" />
+					<input id="contactName" name="Name" type="text" placeholder="Name" required />
+					<input id="contactEmail" name="E-Mail" type="email" placeholder="E-Mail" required />
+					<textarea id="contactMessage" name="Nachricht" rows="4" placeholder="Worum geht's? Ausbildung, Maschinenhilfe, Besuch?" required></textarea>
+					<label class="contact__upload">Optional: Unterlagen hochladen
+						<input type="file" name="Anhang" accept=".pdf,.doc,.docx,.jpg,.png" />
+					</label>
+					<button class="btn btn--primary" type="submit">Nachricht senden</button>
 				</form>
 				<small id="contactFormHint">Bitte gib an, wann du Zeit hast – dann planen wir dich fix ein.</small>
 			</div>
@@ -337,31 +388,6 @@ const visit = {
 	</main>
 </Layout>
 
-<script>
-	if (typeof document !== 'undefined') {
-		const form = document.getElementById('contactForm');
-		const hint = document.getElementById('contactFormHint');
-		form?.addEventListener('submit', (event) => {
-			event.preventDefault();
-			const name = (document.getElementById('contactName')?.value || '').trim();
-			const email = (document.getElementById('contactEmail')?.value || '').trim();
-			const message = (document.getElementById('contactMessage')?.value || '').trim();
-			const subject = name ? `Kontakt von ${name}` : 'Kontakt vom Hof-Formular';
-			const bodyParts = [
-				name ? `Name: ${name}` : null,
-				email ? `E-Mail: ${email}` : null,
-				message ? '' : null,
-				message || null
-			].filter(Boolean);
-			const body = encodeURIComponent(bodyParts.join('\n\n'));
-			const mailto = `mailto:info@goettl-oberbubach.de?subject=${encodeURIComponent(subject)}&body=${body}`;
-			window.location.href = mailto;
-			if (hint) {
-				hint.textContent = 'Dein Mailprogramm sollte sich öffnen – falls nicht, schreib direkt an info@goettl-oberbubach.de.';
-			}
-		});
-	}
-</script>
 
 <style>
 	:global(body) {
@@ -376,6 +402,11 @@ const visit = {
 		flex-direction: column;
 		gap: 3.5rem;
 		padding: clamp(1.5rem, 4vw, 4rem);
+	}
+
+	.page h2,
+	.page h3 {
+		font-family: "Playfair Display", serif;
 	}
 
 	.eyebrow {
@@ -428,14 +459,31 @@ const visit = {
 	}
 
 	.btn {
-		background: #cfa962;
-		color: #1f1c17;
-		border: none;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.4rem;
 		border-radius: 999px;
 		padding: 0.8rem 1.6rem;
 		font-weight: 600;
-		cursor: pointer;
 		text-decoration: none;
+		border: 1px solid transparent;
+	}
+
+	.btn--primary {
+		background: #cfa962;
+		color: #1f1c17;
+	}
+
+	.btn--outline {
+		background: transparent;
+		color: #cfa962;
+		border-color: #cfa962;
+	}
+
+	.btn--neutral {
+		background: #f0eadc;
+		color: #4b4a45;
 	}
 
 	.link {
@@ -694,6 +742,13 @@ const visit = {
 		color: #5a564f;
 	}
 
+	.visit__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		margin-top: 1rem;
+	}
+
 	.visit__map iframe {
 		width: 100%;
 		border: none;
@@ -701,6 +756,39 @@ const visit = {
 		border-radius: 1rem;
 	}
 
+	.status {
+		background: #fff;
+		border-radius: 1.5rem;
+		padding: 2rem;
+		border: 1px solid #eadfc9;
+	}
+
+	.status__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
+	}
+
+	.status__label {
+		text-transform: uppercase;
+		font-size: 0.7rem;
+		letter-spacing: 0.15em;
+		margin: 0;
+	}
+
+	.status__label--in\ arbeit {
+		color: #215e3d;
+	}
+
+	.status__label--wartet {
+		color: #a46b0d;
+	}
+
+	.status__label--live {
+		color: #4b5f49;
+	}
+
+	.blog-contact {
 	.blog-contact {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
@@ -718,11 +806,27 @@ const visit = {
 		border-radius: 1rem;
 		padding: 1.2rem;
 		border: 1px solid #ebe1cf;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
 	}
 
-	.blog__date {
-		font-size: 0.85rem;
+	.blog__badge {
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		letter-spacing: 0.12em;
+		color: #215e3d;
+	}
+
+	.blog__meta {
+		margin: 0;
+		font-size: 0.9rem;
 		color: #7a746d;
+	}
+
+	.blog__status {
+		font-size: 0.85rem;
+		color: #5f5b52;
 	}
 
 	.contact {
@@ -777,6 +881,20 @@ const visit = {
 	.contact__cta-btn--whatsapp {
 		background: #25d366;
 		color: #103a1d;
+	}
+
+	.contact__upload {
+		font-size: 0.9rem;
+		color: #5c5a56;
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+	}
+
+	.contact__upload input {
+		border: 1px dashed #d8cbb3;
+		padding: 0.4rem;
+		border-radius: 0.6rem;
 	}
 
 	.contact input,

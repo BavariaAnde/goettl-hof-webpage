@@ -8,6 +8,8 @@ const {
 	title = "Göttl Hof",
 	description = "Familienbetrieb aus Niederbayern mit Milchvieh, Feldern und Herz."
 } = Astro.props as Props;
+const siteUrl = "https://www.goettl-oberbubach.de";
+const shareImage = `${siteUrl}/images/hof-panorama-sommer.webp`;
 ---
 <!doctype html>
 <html lang="de">
@@ -19,6 +21,17 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<link rel="canonical" href={siteUrl} />
+		<meta property="og:site_name" content="Göttl Hof" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:image" content={shareImage} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={shareImage} />
 		<link
 			rel="preconnect"
 			href="https://fonts.googleapis.com"
@@ -28,7 +41,27 @@ const {
 			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap"
 			rel="stylesheet"
 		/>
-	</head>
+			<script type="application/ld+json">{JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Farm",
+			"name": "Göttl Hof",
+			"url": siteUrl,
+			"image": shareImage,
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "Oberbubach",
+				"postalCode": "94439",
+				"addressLocality": "Roßbach",
+				"addressCountry": "DE"
+			},
+			"contactPoint": [{
+				"@type": "ContactPoint",
+				"contactType": "customer service",
+				"telephone": "+4985641268",
+				"email": "info@goettl-oberbubach.de"
+			}]
+		})}</script>
+</head>
 	<body>
 		<slot />
 	</body>
