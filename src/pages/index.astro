@@ -336,31 +336,12 @@ const visit = {
 			</div>
 			<div class="contact" id="contact">
 				<h2>Kontakt & Rückfragen</h2>
-				<p>{visit.address} – genaue Wegbeschreibung nach Anfrage</p>
-				<ul>
-					<li>Mail: info@goettl-oberbubach.de</li>
-					<li>Telefon: +49 8564 1268</li>
-				</ul>
-				<div class="contact__cta">
-					<p>Am besten erreichbar täglich zwischen 18 und 20 Uhr.</p>
-					<div class="contact__cta-buttons">
-						<a class="btn btn--primary contact__cta-btn" href="tel:+4985641268">Anrufen</a>
-						<a class="btn btn--outline contact__cta-btn" href="mailto:info@goettl-oberbubach.de">Mail schreiben</a>
-						<a class="btn btn--neutral contact__cta-btn contact__cta-btn--whatsapp" href="https://wa.me/491605925821" target="_blank" rel="noreferrer">WhatsApp</a>
-					</div>
+				<p>Wir freuen uns über eure Nachricht – am besten erreichbar täglich zwischen 18 und 20 Uhr.</p>
+				<div class="contact__buttons">
+					<a class="btn btn--primary" href="tel:+4985641268">📞 Anrufen</a>
+					<a class="btn btn--outline" href="mailto:info@goettl-oberbubach.de">✉️ Mail schreiben</a>
+					<a class="btn btn--neutral" href="https://wa.me/491605925821" target="_blank" rel="noreferrer">💬 WhatsApp</a>
 				</div>
-				<form id="contactForm" action="https://formsubmit.io/send/info%40goettl-oberbubach.de" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="_captcha" value="false" />
-					<input type="hidden" name="_next" value="https://www.goettl-oberbubach.de/#contact" />
-					<input id="contactName" name="Name" type="text" placeholder="Name" required />
-					<input id="contactEmail" name="E-Mail" type="email" placeholder="E-Mail" required />
-					<textarea id="contactMessage" name="Nachricht" rows="4" placeholder="Worum geht's? Ausbildung, Maschinenhilfe, Besuch?" required></textarea>
-					<label class="contact__upload">Optional: Unterlagen hochladen
-						<input type="file" name="Anhang" accept=".pdf,.doc,.docx,.jpg,.png" />
-					</label>
-					<button class="btn btn--primary" type="submit">Nachricht senden</button>
-				</form>
-				<small id="contactFormHint">Bitte gib an, wann du Zeit hast – dann planen wir dich fix ein.</small>
 			</div>
 		</section>
 	</main>
@@ -776,83 +757,24 @@ const visit = {
 	}
 
 	.contact {
-		background: #fff;
-		border-radius: 1.5rem;
-		padding: 1.5rem;
-		border: 1px solid #eadfc9;
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	.contact ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		line-height: 1.8;
-	}
-
-	.contact form {
-		display: flex;
-		flex-direction: column;
-		gap: 0.7rem;
-	}
-
-	.contact__cta {
-		margin: 1rem 0;
-		background: #f8f4ed;
-		border: 1px solid #eadfc9;
-		border-radius: 1rem;
-		padding: 1rem 1.2rem;
-	}
-
-	.contact__cta-buttons {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.6rem;
-		margin-top: 0.8rem;
-	}
-
-	.contact__cta-btn {
-		flex: 1 1 140px;
+		padding: 2rem;
 		text-align: center;
 	}
 
-	.contact__cta-btn--outline {
-		background: transparent;
-		border: 1px solid #cfa962;
-		color: #cfa962;
+	.contact h2 {
+		margin-bottom: 0.5rem;
 	}
 
-	.contact__cta-btn--whatsapp {
-		background: #25d366;
-		color: #103a1d;
+	.contact p {
+		color: #5a564f;
+		margin-bottom: 1.5rem;
 	}
 
-	.contact__upload {
-		font-size: 0.9rem;
-		color: #5c5a56;
+	.contact__buttons {
 		display: flex;
-		flex-direction: column;
-		gap: 0.3rem;
-	}
-
-	.contact__upload input {
-		border: 1px dashed #d8cbb3;
-		padding: 0.4rem;
-		border-radius: 0.6rem;
-	}
-
-	.contact input,
-	.contact textarea {
-		border-radius: 0.8rem;
-		border: 1px solid #d8cbb3;
-		padding: 0.75rem 1rem;
-		font-family: inherit;
-	}
-
-	.contact small {
-		color: #6b645b;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.75rem;
 	}
 
 	@media (max-width: 900px) {
