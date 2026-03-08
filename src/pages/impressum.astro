@@ -1,0 +1,129 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Impressum – Göttl Hof" description="Impressum des Göttl Hofs in Oberbubach, 94439 Roßbach (Niederbayern)">
+	<main class="imprint-page">
+		<a href="/" class="back-link">← Zurück zur Startseite</a>
+		<h1>Impressum</h1>
+
+		<section>
+			<h2>Angaben gemäß § 5 TMG</h2>
+			<p>
+				<strong>Göttl Hof</strong><br />
+				Inhaber: Familie Göttl<br />
+				Oberbubach<br />
+				94439 Roßbach<br />
+				Deutschland
+			</p>
+		</section>
+
+		<section>
+			<h2>Kontakt</h2>
+			<p>
+				Telefon: <a href="tel:+4985641268">+49 8564 1268</a><br />
+				WhatsApp: <a href="https://wa.me/491605925821">+49 160 5925821</a><br />
+				E-Mail: <a href="mailto:info@goettl-oberbubach.de">info@goettl-oberbubach.de</a>
+			</p>
+		</section>
+
+		<section>
+			<h2>Umsatzsteuer-ID</h2>
+			<p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: <em>Wird auf Anfrage mitgeteilt.</em></p>
+		</section>
+
+		<section>
+			<h2>Verantwortlich für den Inhalt</h2>
+			<p>Familie Göttl, Oberbubach, 94439 Roßbach</p>
+		</section>
+
+		<section>
+			<h2>Streitschlichtung</h2>
+			<p>
+				Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+				<a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noreferrer">https://ec.europa.eu/consumers/odr</a>.<br />
+				Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet,
+				an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+			</p>
+		</section>
+
+		<section>
+			<h2>Haftung für Inhalte</h2>
+			<p>
+				Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den
+				allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+				verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+				zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+			</p>
+		</section>
+
+		<section>
+			<h2>Urheberrecht</h2>
+			<p>
+				Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+				Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb
+				der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw.
+				Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+			</p>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.imprint-page {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
+		color: var(--text);
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: 2rem;
+		color: var(--accent);
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.back-link:hover {
+		text-decoration: underline;
+	}
+
+	h1 {
+		font-family: "Playfair Display", serif;
+		font-size: clamp(2rem, 5vw, 3rem);
+		margin-bottom: 2rem;
+		color: var(--text);
+	}
+
+	h2 {
+		font-family: "Playfair Display", serif;
+		font-size: 1.25rem;
+		margin-top: 2rem;
+		margin-bottom: 0.5rem;
+		color: var(--accent);
+	}
+
+	section {
+		border-bottom: 1px solid var(--border);
+		padding-bottom: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	section:last-child {
+		border-bottom: none;
+	}
+
+	p {
+		line-height: 1.75;
+		color: var(--text-muted);
+	}
+
+	a {
+		color: var(--accent);
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+</style>
