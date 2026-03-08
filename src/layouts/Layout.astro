@@ -1,4 +1,9 @@
 ---
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/playfair-display/500.css";
+import "@fontsource/playfair-display/600.css";
 interface Props {
 	title?: string;
 	description?: string;
@@ -32,12 +37,7 @@ const shareImage = `${siteUrl}/images/hof-panorama-sommer.webp`;
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={shareImage} />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap"
-			rel="stylesheet"
-		/>
+
 		<script type="application/ld+json">{JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "Farm",
@@ -46,7 +46,7 @@ const shareImage = `${siteUrl}/images/hof-panorama-sommer.webp`;
 			"image": shareImage,
 			"address": {
 				"@type": "PostalAddress",
-				"streetAddress": "Oberbubach",
+				"streetAddress": "Oberbubach 1a",
 				"postalCode": "94439",
 				"addressLocality": "Roßbach",
 				"addressCountry": "DE"
