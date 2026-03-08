@@ -1,0 +1,82 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { blogPosts } from "../../data/blogPosts";
+
+const baseUrl = (import.meta.env.BASE_URL ?? "").replace(/\/$/, "");
+const asset = (path: string) => `${baseUrl}/${path.replace(/^\/+/ , "")}`;
+---
+<Layout title="Blog & Aktuelles – Göttl Hof" description="Aktuelle Themen rund um Hofleben, Ausbildung und Maschinen.">
+	<section class="blog-page">
+		<header class="blog-page__head">
+			<p class="eyebrow">Aktuelles</p>
+			<h1>Blog &amp; Einblicke</h1>
+			<p>Kurze Updates aus Oberbubach – zum Hofleben, zur Ausbildung und zur Technik, mit der wir arbeiten.</p>
+		</header>
+
+		<div class="blog-page__grid">
+			{blogPosts.map((post, i) => (
+				<article class={`blog-card${i === 0 ? ' blog-card--featured' : ''}`}>
+					<p class="blog-card__category">{post.category}</p>
+					<h2 class="blog-card__title">{post.title}</h2>
+					<p class="blog-card__meta">
+						{post.date} · {post.readTime} · {post.status}
+					</p>
+					<p class="blog-card__summary">{post.summary}</p>
+					<a class="blog-card__link" href={asset(`/blog/${post.slug}/`)}>Mehr lesen →</a>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<style>
+	.blog-page {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.blog-page__head h1 {
+		font-family: "Playfair Display", serif;
+		margin: 0.2rem 0 0.8rem;
+	}
+
+	.blog-page__head p {
+		color: var(--text-muted);
+		max-width: 55ch;
+	}
+
+	.blog-page__grid {
+		display: grid;
+		gap: 1px;
+		background: var(--border);
+		border: 1px solid var(--border);
+		border-radius: 1.2rem;
+		overflow: hidden;
+	}
+
+	.blog-card {
+		background: var(--bg-card);
+		padding: 1.5rem 1.75rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.blog-card:nth-child(even) {
+		background: var(--bg-soft);
+	}
+
+	@media (min-width: 640px) {
+		.blog-page__grid {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.blog-card--featured {
+			grid-column: 1 / -1;
+		}
+	}
+	</style>
+</Layout>

@@ -1,52 +1,53 @@
 # Göttl Hof Webpage
 
-Ein minimalistischer, aber hochwertiger Astro-Auftritt für den Familienbetrieb Göttl Hof aus Niederbayern.
-Die Seite ist aktuell mit Platzhalter-Texten und -Bildern befüllt und soll später um echte Inhalte, Fotos und
-Blogbeiträge ergänzt werden. Ziel: freundlich, clean, modern – mit Fokus auf Kontaktmöglichkeiten.
+Astro-basierter Webauftritt für den Familienbetrieb Göttl Hof (Oberbubach/Roßbach). Fokus: klare Vorstellung des Hofes, Ansprechpartner, Ausbildung sowie dezente Blog-/News-Beiträge.
 
 ## ✨ Features
 
-- **Astro + Tailwind-ähnlicher Utility-Look** (rein mit CSS umgesetzt, keine externe Runtime)
-- Hero-Sektion mit großem Claim und Call-to-Action
-- Kennzahlen, Leistungs- und Galerie-Abschnitte
-- Vorbereitete Blog-Karten (Dummy-Daten)
-- Kontaktbereich inkl. Formular-Platzhalter und Highlight-Fläche
-- Responsives Layout (ab ~320 px Breite getestet)
+- Vollflächiger Hero mit CTA, Dark-Mode-Toggle (Desktop & Mobile sichtbar)
+- Sektionen für Kennzahlen, Leistungen/Maschinen, Jahreszeiten, Ausbildung, FAQ und Besuch
+- Galerie mit optimierten Bildern (sharp-pipeline)
+- Blog-Karten auf der Startseite **plus eigene Detailseiten** unter `/blog/<slug>/`
+- Blog-Übersicht unter `/blog` als öffentlich durchklickbare Liste
+- Manifest + Favicons (SVG, PNG, ICO, Apple-Touch) für einheitliches Branding
+- Reines Static-Site-Setup (Astro, kein Client-JS außer Dark-Mode-Helper)
 
 ## 🗂 Projektstruktur
 
 ```text
 /
-├── public/           # statische Assets (Favicons etc.)
+├── public/
+│   ├── favicon.* / apple-touch-icon.png / icon-*.png /
+│   └── images/ …
 ├── src/
-│   ├── assets/       # Logos, Illustrationen
-│   ├── components/   # (kann erweitert werden)
-│   ├── layouts/      # Basis-Layout mit globaler Typo & Farben
-│   └── pages/        # Aktuell nur index.astro
+│   ├── data/blogPosts.ts   # zentrale Blog-Daten
+│   ├── layouts/Layout.astro
+│   └── pages/
+│       ├── index.astro     # Landingpage
+│       ├── blog/index.astro
+│       └── blog/[slug].astro
 ├── package.json
 ├── astro.config.mjs
 └── tsconfig.json
 ```
 
+## 📝 Blog pflegen
+
+1. `src/data/blogPosts.ts` anpassen – jeder Eintrag enthält Meta-Daten, heroImage, Textabschnitte und optionalen CTA.
+2. Bilder liegen in `public/images/…` (SVG/PNG/WebP), bitte dort referenzieren (z.B. `/images/fendt-grubern.webp`).
+3. Die Startseite und die Blog-Übersicht lesen automatisch alle Posts aus der Datei; „Mehr lesen“ zeigt auf `/blog/<slug>/`.
+
 ## 🧞 Befehle
 
-| Command         | Beschreibung                                  |
-| --------------- | ---------------------------------------------- |
-| `npm install`   | Dependencies installieren                      |
-| `npm run dev`   | Lokaler Dev-Server (http://localhost:4321)     |
-| `npm run build` | Produktion-Build nach `dist/`                  |
-| `npm run preview` | Gebauten Stand lokal testen                  |
+| Command           | Beschreibung                                  |
+| ----------------- | ---------------------------------------------- |
+| `npm install`     | Dependencies installieren                      |
+| `npm run dev`     | Dev-Server (http://localhost:4321)             |
+| `npm run build`   | Produktion-Build nach `dist/`                  |
+| `npm run preview` | Build lokal testen                             |
 
 ## 🚀 Deployment
 
-Empfohlen für den kostenlosen Betrieb: **GitHub Pages**, **Cloudflare Pages** oder **Netlify**.
-Der Build ist statisch (`astro build`), daher einfach den `dist`-Ordner veröffentlichen.
-
-## 🔜 TODO / Nächste Schritte
-
-- Echte Texte (Über uns, Leistungen, Blogposts) einpflegen
-- Original-Fotos austauschen
-- Kontaktformular mit gewünschtem Dienst (Formspree, Netlify, eigenes Backend) verbinden
-- Domain `goettl-agrar.de` oder alternative Subdomain auf das Hosting zeigen
+Ideal für GitHub Pages / Cloudflare Pages / Netlify. Build ist statisch (`astro build`) → fertigen `dist`-Ordner ausliefern. Domain `www.goettl-oberbubach.de` zeigt aufs GitHub Pages Repo.
 
 Happy farming 🌾🐄

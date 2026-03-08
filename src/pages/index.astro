@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { blogPosts } from "../data/blogPosts";
 
 const baseUrl = (import.meta.env.BASE_URL ?? "").replace(/\/$/, "");
 const asset = (path) => `${baseUrl}/${path.replace(/^\/+/ , "")}`;
@@ -78,35 +79,9 @@ const seasons = [
 	}
 ];
 
-const posts = [
-	{
-		title: "Hofchronik 2025 – was sich alles getan hat",
-		date: "12. Februar 2026",
-		category: "Hofleben",
-		readTime: "4 Min.",
-		status: "Entwurf in Bearbeitung",
-		summary: "Neue Silos, mehr Sensoren im Stall und warum wir auf Heu aus eigener Ernte setzen.",
-		link: "#blog"
-	},
-	{
-		title: "Ausbildungsplätze: 2026 vergeben, 2027 Warteliste",
-		date: "28. Januar 2026",
-		category: "Ausbildung",
-		readTime: "3 Min.",
-		status: "Veröffentlicht",
-		summary: "Ein Blick hinter die Kulissen des Auswahlprozesses und was Bewerber erwarten können.",
-		link: "#ausbildung"
-	},
-	{
-		title: "Neue Technik für die Felder",
-		date: "05. Dezember 2025",
-		category: "Maschinen",
-		readTime: "2 Min.",
-		status: "Live",
-		summary: "Warum der neue Schwader & die Drillkombi unseren Alltag erleichtern.",
-		link: "#maschinen"
-	}
-];
+const posts = blogPosts;
+
+
 
 const faqs = [
 	{
@@ -417,7 +392,7 @@ const seasonMeta = [
 								<time datetime={post.date}>{post.date}</time>&ensp;·&ensp;{post.readTime}
 							</p>
 							<p class="blog-card__summary">{post.summary}</p>
-							<a class="blog-card__link" href={post.link}>Mehr lesen →</a>
+							<a class="blog-card__link" href={asset(`/blog/${post.slug}/`)}>Mehr lesen →</a>
 						</article>
 					))}
 				</div>
