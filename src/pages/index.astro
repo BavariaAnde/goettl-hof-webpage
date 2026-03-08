@@ -157,11 +157,17 @@ const seasonMeta = [
 			</a>
 
 			<input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true" />
-			<label for="nav-toggle" class="nav-hamburger" aria-label="Navigation öffnen/schließen">
-				<span class="nav-hamburger__bar"></span>
-				<span class="nav-hamburger__bar"></span>
-				<span class="nav-hamburger__bar"></span>
-			</label>
+			<div class="nav__actions">
+				<button id="darkToggle" class="nav__dark-toggle" aria-label="Dark Mode umschalten" title="Dark Mode umschalten">
+					<span class="toggle-icon toggle-icon--light">🌙</span>
+					<span class="toggle-icon toggle-icon--dark">☀️</span>
+				</button>
+				<label for="nav-toggle" class="nav-hamburger" aria-label="Navigation öffnen/schließen">
+					<span class="nav-hamburger__bar"></span>
+					<span class="nav-hamburger__bar"></span>
+					<span class="nav-hamburger__bar"></span>
+				</label>
+			</div>
 
 			<ul class="nav__links" role="list">
 				<li><a href="#hof" class="nav__link">Hof</a></li>
