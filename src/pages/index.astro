@@ -78,12 +78,6 @@ const seasons = [
 	}
 ];
 
-const statusBoard = [
-	{ label: "In Arbeit", issue: "#10 Team-Steckbrief", note: "Designphase läuft" },
-	{ label: "Wartet", issue: "#11 Direktverkauf FAQ", note: "Freigabe offen" },
-	{ label: "Live", issue: "#8 Kontakt-CTA", note: "seit 04.03. online" }
-];
-
 const posts = [
 	{
 		title: "Hofchronik 2025 – was sich alles getan hat",
@@ -322,22 +316,6 @@ const visit = {
 			</div>
 		</section>
 
-		<section class="status" aria-label="Statusboard">
-			<div class="status__intro">
-				<h2>Was passiert gerade?</h2>
-				<p>Direkter Blick auf Issues & Aufgaben – damit die Familie weiß, woran wir gerade bauen.</p>
-			</div>
-			<div class="status__grid">
-				{statusBoard.map((item) => (
-					<article>
-						<p class="status__label">{item.label}</p>
-						<h3>{item.issue}</h3>
-						<p>{item.note}</p>
-					</article>
-				))}
-			</div>
-		</section>
-
 		<section class="blog-contact" id="blog">
 			<div class="blog">
 				<h2>Blog & Aktuelles</h2>
@@ -371,7 +349,7 @@ const visit = {
 						<a class="btn btn--neutral contact__cta-btn contact__cta-btn--whatsapp" href="https://wa.me/491605925821" target="_blank" rel="noreferrer">WhatsApp</a>
 					</div>
 				</div>
-				<form id="contactForm" action="https://formsubmit.co/info@goettl-oberbubach.de" method="POST" enctype="multipart/form-data">
+				<form id="contactForm" action="https://formsubmit.co/info%40goettl-oberbubach.de" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="_captcha" value="false" />
 					<input type="hidden" name="_next" value="https://www.goettl-oberbubach.de/#contact" />
 					<input id="contactName" name="Name" type="text" placeholder="Name" required />
@@ -754,38 +732,6 @@ const visit = {
 		border: none;
 		height: 280px;
 		border-radius: 1rem;
-	}
-
-	.status {
-		background: #fff;
-		border-radius: 1.5rem;
-		padding: 2rem;
-		border: 1px solid #eadfc9;
-	}
-
-	.status__grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 1rem;
-	}
-
-	.status__label {
-		text-transform: uppercase;
-		font-size: 0.7rem;
-		letter-spacing: 0.15em;
-		margin: 0;
-	}
-
-	.status__label--in\ arbeit {
-		color: #215e3d;
-	}
-
-	.status__label--wartet {
-		color: #a46b0d;
-	}
-
-	.status__label--live {
-		color: #4b5f49;
 	}
 
 	.blog-contact {
