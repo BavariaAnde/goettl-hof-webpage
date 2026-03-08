@@ -75,7 +75,7 @@ export const blogPosts: BlogPost[] = [
 			{
 				paragraphs: [
 					"Wir haben dieses Jahr wieder unzählige Mails und Gespräche geführt. Danke an alle, die sich vorgestellt haben – es freut uns, wie viel Motivation es in der Landwirtschaft gibt.",
-					"Die Plätze für 2026 sind vergeben. Wir haben uns für zwei Personen entschieden, die schon Praktika bei uns gemacht haben."
+					"Der Platz für 2026 ist vergeben. Wir haben uns für eine Person entschieden, die bereits ein Praktikum bei uns gemacht hat."
 				]
 			},
 			{
@@ -94,35 +94,5 @@ export const blogPosts: BlogPost[] = [
 			label: "Ausbildung anfragen",
 			href: "/#ausbildung"
 		}
-	},
-	{
-		slug: "neue-technik-felder",
-		title: "Neue Technik für die Felder",
-		date: "05. Dezember 2025",
-		category: "Maschinen",
-		readTime: "2 Min.",
-		status: "Live",
-		summary: "Warum der neue Schwader & die Drillkombi unseren Alltag erleichtern.",
-		heroImage: "/images/fendt-grubern.webp",
-		heroAlt: "Fendt beim Grubbern auf dem Feld",
-		content: [
-			{
-				paragraphs: [
-					"Wir haben investiert: ein moderner Schwader und eine Gaspardo Drillkombi sind eingezogen. Beide Geräte haben wir ausgiebig getestet und direkt bei Nachbarn eingesetzt.",
-					"Die breiteren Arbeitsbreiten sparen uns Fahrzeit, schonen den Boden und liefern sauberere Schwadhaufen – weniger Futterverlust, mehr Ruhe im Ablauf."
-				]
-			},
-			{
-				heading: "Wichtig war uns",
-				list: [
-					"Einfache Wartung, weil wir vieles selbst schrauben",
-					"Passend für unsere Hanglagen",
-					"Schnell umrüstbar, wenn ein Nachbar spontan Hilfe braucht"
-				],
-				paragraphs: [
-					"Wer mitfahren will oder Maschinenunterstützung braucht – meldet euch."
-				]
-			}
-		]
 	}
 ];

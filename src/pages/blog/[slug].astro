@@ -4,12 +4,14 @@ import { blogPosts } from "../../data/blogPosts";
 
 const baseUrl = (import.meta.env.BASE_URL ?? "").replace(/\/$/, "");
 const asset = (path: string) => `${baseUrl}/${path.replace(/^\/+/ , "")}`;
+const publishedPosts = blogPosts.filter((entry) => !/entwurf/i.test(entry.status ?? ""));
 
 const { slug } = Astro.params;
-const post = blogPosts.find((entry) => entry.slug === slug);
+const post = publishedPosts.find((entry) => entry.slug === slug);
 
 export function getStaticPaths() {
-	return blogPosts.map((post) => ({ params: { slug: post.slug } }));
+	const published = blogPosts.filter((post) => !/entwurf/i.test(post.status ?? ""));
+	return published.map((post) => ({ params: { slug: post.slug } }));
 }
 
 if (!post) {

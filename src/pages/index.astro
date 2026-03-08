@@ -4,6 +4,7 @@ import { blogPosts } from "../data/blogPosts";
 
 const baseUrl = (import.meta.env.BASE_URL ?? "").replace(/\/$/, "");
 const asset = (path) => `${baseUrl}/${path.replace(/^\/+/ , "")}`;
+const isDraftStatus = (status = "") => /entwurf/i.test(status);
 
 const stats = [
 	{ label: "Milchkühe", value: "≈ 70" },
@@ -41,10 +42,10 @@ const equipment = [
 ];
 
 const trainingSlots = [
-	{ year: "2026", status: "belegt", note: "Platz vergeben" },
-	{ year: "2027", status: "belegt", note: "Platz vergeben" },
-	{ year: "2028", status: "belegt", note: "Platz vergeben" },
-	{ year: "2029", status: "frei", note: "Frei ab 01.08.2029" }
+	{ year: "2026", status: "belegt", note: "Ein Platz vergeben" },
+	{ year: "2027", status: "belegt", note: "Ein Platz vergeben" },
+	{ year: "2028", status: "belegt", note: "Ein Platz vergeben" },
+	{ year: "2029", status: "frei", note: "Ein Platz frei ab 01.08.2029" }
 ];
 
 const gallery = [
@@ -79,7 +80,7 @@ const seasons = [
 	}
 ];
 
-const posts = blogPosts;
+const posts = blogPosts.filter((post) => !isDraftStatus(post.status));
 
 
 
@@ -90,7 +91,7 @@ const faqs = [
 	},
 	{
 		question: "Wie läuft die Ausbildung?",
-		answer: "Start immer 1. August. Wir nehmen 1-2 Personen, Wohnmöglichkeit nach Absprache. Melde dich frühzeitig."
+		answer: "Start immer 1. August. Wir vergeben genau einen Ausbildungsplatz pro Jahr, Wohnmöglichkeit nach Absprache. Melde dich frühzeitig."
 	},
 	{
 		question: "Darf ich spontan vorbeikommen?",
@@ -295,8 +296,7 @@ const seasonMeta = [
 					<p class="eyebrow">Ausbildung &amp; Mitarbeit</p>
 					<h2 id="training-heading">Landwirtschaft<br/>wirklich lernen</h2>
 					<p class="training__desc">
-						Start ist jedes Jahr am <strong>1. August</strong>. Wir nehmen 1–2 Personen, die Landwirtschaft wirklich
-						lernen wollen. Eigene Projekte, Umgang mit Tieren und Maschinen, Wohnen nach Absprache.
+						Start ist jedes Jahr am <strong>1. August</strong>. Wir vergeben pro Jahr genau einen Ausbildungsplatz für Menschen, die Landwirtschaft wirklich lernen wollen. Eigene Projekte, Umgang mit Tieren und Maschinen, Wohnen nach Absprache.
 					</p>
 
 					<div class="training__timeline" aria-label="Ausbildungsplätze">

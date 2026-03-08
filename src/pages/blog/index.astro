@@ -4,6 +4,7 @@ import { blogPosts } from "../../data/blogPosts";
 
 const baseUrl = (import.meta.env.BASE_URL ?? "").replace(/\/$/, "");
 const asset = (path: string) => `${baseUrl}/${path.replace(/^\/+/ , "")}`;
+const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?? ""));
 ---
 <Layout title="Blog & Aktuelles – Göttl Hof" description="Aktuelle Themen rund um Hofleben, Ausbildung und Maschinen.">
 	<section class="blog-page">
@@ -14,7 +15,7 @@ const asset = (path: string) => `${baseUrl}/${path.replace(/^\/+/ , "")}`;
 		</header>
 
 		<div class="blog-page__grid">
-			{blogPosts.map((post, i) => (
+			{publishedPosts.map((post, i) => (
 				<article class={`blog-card${i === 0 ? ' blog-card--featured' : ''}`}>
 					<p class="blog-card__category">{post.category}</p>
 					<h2 class="blog-card__title">{post.title}</h2>
