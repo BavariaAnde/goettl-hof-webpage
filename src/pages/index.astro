@@ -129,7 +129,12 @@ const visit = {
 	mapsLink: "https://maps.app.goo.gl/4ouS1fks4bA7Rh1s5"
 };
 
-const statsEmojis = ["🐄", "🌾", "🌲", "🎓"];
+const statsIcons = [
+	`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="13" rx="6" ry="4"/><path d="M6.5 9C4.5 9 3 10 3 11.5S4.5 14 6.5 14"/><path d="M17.5 9C19.5 9 21 10 21 11.5S19.5 14 17.5 14"/><path d="M8 9C7.5 7 6.5 6 5.5 5.5"/><path d="M16 9C16.5 7 17.5 6 18.5 5.5"/><line x1="9" y1="17" x2="9" y2="20"/><line x1="15" y1="17" x2="15" y2="20"/></svg>`,
+	`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+	`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 19.34A1 1 0 0 0 4.63 21C6.4 20.12 10.14 18.5 12 15c1.37-2.37 1.37-4.42 2-6.2"/><path d="M17 8c.85 2.45 1.08 3.73 1 6C16.61 19.12 14 20.5 12 21"/><path d="M6 13c.5-2 1.5-3.5 4-4.5"/></svg>`,
+	`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`
+];
 ---
 <Layout
 	title="Göttl Hof – Oberbubach/ Roßbach"
@@ -195,7 +200,7 @@ const statsEmojis = ["🐄", "🌾", "🌲", "🎓"];
 		<section class="stats" aria-label="Hofkennzahlen">
 			{stats.map((item, i) => (
 				<div class="stats__card">
-					<span class="stats__emoji" aria-hidden="true">{statsEmojis[i]}</span>
+					<span class="stats__icon" aria-hidden="true" set:html={statsIcons[i]} />
 					<p class="stats__value">{item.value}</p>
 					<p class="stats__label">{item.label}</p>
 				</div>
@@ -421,6 +426,12 @@ const statsEmojis = ["🐄", "🌾", "🌲", "🎓"];
 			<a href="/impressum">Impressum</a>
 		</nav>
 	</footer>
+	<footer class="site-footer">
+		<p>© 2026 Göttl Hof · Oberbubach · 94439 Roßbach</p>
+		<nav aria-label="Footer Navigation">
+			<a href="/impressum">Impressum</a>
+		</nav>
+	</footer>
 </Layout>
 
 <style>
@@ -506,7 +517,7 @@ const statsEmojis = ["🐄", "🌾", "🌲", "🎓"];
 	flex-shrink: 0;
 }
 
-.nav__brand-emoji {
+.nav__brand-icon {
 	font-size: 1.3rem;
 }
 
@@ -846,7 +857,7 @@ const statsEmojis = ["🐄", "🌾", "🌲", "🎓"];
 	box-shadow: 0 10px 25px var(--shadow);
 }
 
-.stats__emoji {
+.stats__icon {
 	font-size: 2rem;
 	display: block;
 	margin-bottom: 0.4rem;
@@ -1575,4 +1586,36 @@ const statsEmojis = ["🐄", "🌾", "🌲", "🎓"];
 	.site-footer a:hover {
 		text-decoration: underline;
 	}
+
+	/* ===== WA BUTTON ===== */
+	.btn--wa {
+		background: #25D366;
+		color: #fff;
+		border: 1px solid #25D366;
+	}
+	.btn--wa:hover {
+		background: #1ebe5d;
+		border-color: #1ebe5d;
+	}
+
+	/* ===== FOOTER ===== */
+	.site-footer {
+		background: var(--bg-strong);
+		border-top: 1px solid var(--border);
+		padding: 1.5rem clamp(1rem, 4vw, 3rem);
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.75rem;
+		font-size: 0.875rem;
+		color: var(--text-muted);
+	}
+	.site-footer p { margin: 0; }
+	.site-footer a {
+		color: var(--accent);
+		text-decoration: none;
+		font-weight: 500;
+	}
+	.site-footer a:hover { text-decoration: underline; }
 </style>
