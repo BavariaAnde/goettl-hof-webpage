@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { blogPosts } from "../../data/blogPosts";
+import Nav from "../../components/Nav.astro";
 
 const baseUrl = (import.meta.env.BASE_URL ?? "").replace(/\/$/, "");
 const asset = (path: string) => `${baseUrl}/${path.replace(/^\/+/ , "")}`;
@@ -19,6 +20,7 @@ if (!post) {
 }
 ---
 <Layout title={`${post.title} – Göttl Hof`} description={post.summary}>
+	<Nav />
 	<article class="blog-post">
 		<div class="blog-post__hero">
 			<p class="blog-post__category">{post.category}</p>
@@ -50,7 +52,7 @@ if (!post) {
 
 		{post.cta && (
 			<div class="blog-post__cta">
-				<a class="btn btn--primary" href={asset(post.cta.href)}>{post.cta.label}</a>
+				<a class="btn btn--primary" href={asset(post.cta.href)} data-umami-event={`cta-${post.slug}`}>{post.cta.label}</a>
 			</div>
 		)}
 	</article>

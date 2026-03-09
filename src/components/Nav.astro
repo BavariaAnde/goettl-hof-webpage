@@ -1,0 +1,38 @@
+---
+interface Props {
+	isHome?: boolean;
+}
+const { isHome = false } = Astro.props as Props;
+const prefix = isHome ? "" : "/";
+const sectionHref = (id: string) => `${prefix}#${id}`;
+---
+<nav class="site-nav" aria-label="Hauptnavigation">
+	<div class="nav__inner">
+		<a class="nav__brand" href={sectionHref("hof-top")} aria-label="Göttl Hof – zurück zum Seitenanfang">
+			<img src="/favicon.svg" class="nav__brand-icon" width="28" height="28" alt="" aria-hidden="true" />
+			<span class="nav__brand-name">Göttl Hof</span>
+		</a>
+
+		<input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true" />
+		<div class="nav__actions">
+			<button id="darkToggle" class="nav__dark-toggle" aria-label="Dark Mode umschalten" title="Dark Mode umschalten">
+				<span class="toggle-icon toggle-icon--light">🌙</span>
+				<span class="toggle-icon toggle-icon--dark">☀️</span>
+			</button>
+			<label for="nav-toggle" class="nav-hamburger" aria-label="Navigation öffnen/schließen">
+				<span class="nav-hamburger__bar"></span>
+				<span class="nav-hamburger__bar"></span>
+				<span class="nav-hamburger__bar"></span>
+			</label>
+		</div>
+
+		<ul class="nav__links" role="list">
+			<li><a href={sectionHref("hof")} class="nav__link">Hof</a></li>
+			<li><a href={sectionHref("maschinen")} class="nav__link">Maschinen</a></li>
+			<li><a href={sectionHref("ausbildung")} class="nav__link">Ausbildung</a></li>
+			<li><a href="/blog/" class="nav__link">Blog</a></li>
+			<li><a href={sectionHref("anfahrt")} class="nav__link">Anfahrt</a></li>
+			<li><a href={sectionHref("contact")} class="nav__link nav__link--cta">Kontakt</a></li>
+		</ul>
+	</div>
+</nav>

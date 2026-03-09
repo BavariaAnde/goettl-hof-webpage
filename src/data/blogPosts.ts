@@ -28,7 +28,7 @@ export const blogPosts: BlogPost[] = [
 		readTime: "4 Min.",
 		status: "Entwurf in Bearbeitung",
 		summary: "Neue Silos, mehr Sensoren im Stall und warum wir auf Heu aus eigener Ernte setzen.",
-		heroImage: "/images/hof-panorama-sommer.webp",
+		heroImage: "/images/blog/hofchronik-2025.webp",
 		heroAlt: "Sommerlicher Blick über den Göttl Hof",
 		content: [
 			{
@@ -69,7 +69,7 @@ export const blogPosts: BlogPost[] = [
 		readTime: "3 Min.",
 		status: "Veröffentlicht",
 		summary: "Ein Blick hinter die Kulissen des Auswahlprozesses und was Bewerber erwarten können.",
-		heroImage: "/images/kuh-mit-kalb.jpg",
+		heroImage: "/images/blog/ausbildungsplaetze-2026.webp",
 		heroAlt: "Auszubildende mit Kuh im Stall",
 		content: [
 			{
@@ -94,5 +94,74 @@ export const blogPosts: BlogPost[] = [
 			label: "Ausbildung anfragen",
 			href: "/#ausbildung"
 		}
-	}
+	},
+
+	{
+		slug: "ausbildung-am-hof",
+		title: "Ausbildung am Hof – Alltag & Perspektive",
+		date: "02. März 2026",
+		category: "Ausbildung",
+		readTime: "4 Min.",
+		status: "Live",
+		summary: "Was Azubis bei uns lernen, wie der Wochenplan aussieht und warum wir auf einen Platz begrenzen.",
+		heroImage: "/images/blog/ausbildung-alltag.webp",
+		heroAlt: "Auszubildender prüft Sensoren im Stall",
+		content: [
+			{
+				paragraphs: [
+					"Ein Ausbildungsplatz, volle Aufmerksamkeit: Wer bei uns startet, läuft nicht einfach nebenher, sondern übernimmt feste Stall- und Feldaufgaben.",
+					"Montag ist Technik-Check, Mittwoch Feldarbeit, am Wochenende Stallroutine – so bleibt genug Zeit zum Erklären und Ausprobieren."
+				]
+			},
+			{
+				heading: "Deine Stationen",
+				list: [
+					"Milchvieh: Fütterung, Gesundheits-Check, Sensor-Daten lesen",
+					"Feld: Bodenbearbeitung, Drillkombi fahren, Silage begleiten",
+					"Werkstatt: Winterservice & kleine Reparaturen"
+				],
+				paragraphs: [
+					"Jede Station dokumentierst du – wir besprechen das wöchentlich und passen den Plan an."
+				]
+			}
+		],
+		cta: {
+			label: "Ausbildung anfragen",
+			href: "/#ausbildung"
+		}
+	},
+	{
+		slug: "fendt-516-vario-gen3",
+		title: "Neuer Fendt 516 Vario Gen3 im Einsatz",
+		date: "18. Februar 2026",
+		category: "Maschinen",
+		readTime: "3 Min.",
+		status: "Live",
+		summary: "Warum wir auf den 516 Gen3 setzen, welche Arbeiten er übernimmt und wie sich der Verbrauch entwickelt.",
+		heroImage: "/images/blog/fendt-516-vario-gen3.webp",
+		heroAlt: "Fendt 516 Vario Gen3 auf dem Grünland",
+		content: [
+			{
+				paragraphs: [
+					"Der 516 ersetzt bei uns den alten 500er. Wichtig war uns: saubere Leistung für Pflegearbeiten und genug Reserven für Transport.",
+					"Die neue Kabine mit digitalem Terminal spart uns Zeit – besonders wenn wir Sensorwerte direkt ins Hofsystem übernehmen."
+				]
+			},
+			{
+				heading: "Erste Eindrücke",
+				list: [
+					"Verbrauch liegt bei Grünlandarbeiten ~8 % unter dem Vorgänger",
+					"Frontladerwechsel geht schneller dank neuer Hydraulik",
+					"Telematik macht Serviceplanung einfacher"
+				],
+				paragraphs: [
+					"Wer Neugier hat: meldet euch – Mitfahren bei Pflegearbeiten ist nach Absprache möglich."
+				]
+			}
+		],
+		cta: {
+			label: "Maschinen anfragen",
+			href: "/#maschinen"
+		}
+	},
 ];
