@@ -10,7 +10,7 @@ Astro-basierter Webauftritt für den Familienbetrieb Göttl Hof (Oberbubach/Roß
 - Blog-Karten auf der Startseite **plus eigene Detailseiten** unter `/blog/<slug>/`
 - Blog-Übersicht unter `/blog` als öffentlich durchklickbare Liste
 - Manifest + Favicons (SVG, PNG, ICO, Apple-Touch) für einheitliches Branding
-- Reines Static-Site-Setup (Astro, kein Client-JS außer Dark-Mode-Helper)
+- Reines Static-Site-Setup (Astro, kein Client-JS außer Dark-Mode-Helper + leichtes Pageview-Tracking)
 
 ## 🗂 Projektstruktur
 
@@ -51,3 +51,15 @@ Astro-basierter Webauftritt für den Familienbetrieb Göttl Hof (Oberbubach/Roß
 Ideal für GitHub Pages / Cloudflare Pages / Netlify. Build ist statisch (`astro build`) → fertigen `dist`-Ordner ausliefern. Domain `www.goettl-oberbubach.de` zeigt aufs GitHub Pages Repo.
 
 Happy farming 🌾🐄
+
+
+## 📈 Analytics (kostenfrei)
+
+- Ein schlankes Tracking via [countapi.xyz](https://countapi.xyz) zählt Seitenaufrufe & CTA-Klicks anonym.
+- Die Werte sind öffentlich abrufbar (Beispiele):
+  - Gesamte Seitenaufrufe: `https://api.countapi.xyz/get/goettl-hof-site/pageviews`
+  - Hero-CTA Kontakt: `https://api.countapi.xyz/get/goettl-hof-site/cta-hero-contact`
+  - Google-Maps-Button: `https://api.countapi.xyz/get/goettl-hof-site/cta-maps`
+  - Telefon/E-Mail/WhatsApp: `https://api.countapi.xyz/get/goettl-hof-site/cta-call` usw. (siehe Key-Namen im Code)
+  - Blog-Clicks: `https://api.countapi.xyz/get/goettl-hof-site/blog-ausbildungsplaetze-2026-vergeben`
+- Keine Registrierung & keine Kosten. Möchtest du Goals ändern, passe einfach `data-analytics="..."` im Markup an.
