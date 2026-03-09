@@ -18,27 +18,52 @@ const cornerstones = [
 	{
 		title: "Milchvieh",
 		description: "Ruhige Herde, Laufstall, viel Handarbeit und Sensoren, die uns unterstützen.",
-		bullets: ["Melken früh & abends", "Eigenes Futter", "Tierwohl zuerst"]
+		bullets: ["Melken früh & abends", "Eigenes Futter", "Tierwohl zuerst", "Modernes Futtermanagement"]
 	},
 	{
 		title: "Felder & Maschinen",
-		description: "Grünlandpflege, Getreide, Mais und Nachbarschaftshilfe – Technik aus Oberbubach.",
-		bullets: ["Fendt, Claas, Pöttinger", "Bodenschonende Bearbeitung", "Helfen wenn wer Hilfe braucht"]
+		description: "Grünlandpflege, Getreide, Mais und Nachbarschaftshilfe.",
+		bullets: ["Fendt, Claas, Pöttinger, Deutz Fahr, Lemken", "Bodenschonende Bearbeitung", "Helfen wenn wer Hilfe braucht"]
 	}
 ];
 
 const equipment = [
 	{
 		title: "Zugmaschinen",
-		details: ["Fendt (300er & 500er Reihe)", "Telelader für Hofarbeiten", "Breitreifen für bodenschonenden Silageeinsatz"]
+		details: [
+			"Fendt Traktoren der 300er und 500er Reihe",
+			"Ältere, robuste Modelle von Deutz-Fahr",
+			"Telelader für Hof- und Verladearbeiten",
+			"Breitreifen zur bodenschonenden Bewirtschaftung"
+		]
 	},
 	{
-		title: "Ernte & Pflege",
-		details: ["Pöttinger Schwader", "Neue Gaspardo Drillkombination", "Ballen- & Transporttechnik"]
+		title: "Ernte & Feldtechnik",
+		details: [
+			"Pöttinger Schwader für die Grünlandernte",
+			"Gaspardo Drillkombination für präzise Aussaat",
+			"Lemken Geräte für Bodenbearbeitung und Saatbettbereitung"
+		]
 	},
 	{
-		title: "Dienstleistungen",
-		details: ["Grünlandpflege & Bodenbearbeitung", "Mais-/Getreideernte", "Nachbarschaftshilfe nach Absprache"]
+		title: "Maschinenleistungen",
+		details: [
+			"Grünlandpflege",
+			"Bodenbearbeitung",
+			"Aussaatarbeiten",
+			"Schwaden von Gras und Heu",
+			"Transportarbeiten mit Traktor und Anhänger",
+			"Silage fahren während der Ernte"
+		]
+	},
+	{
+		title: "Nachbarschaftshilfe",
+		details: [
+			"Unterstützung bei der Silageernte",
+			"Transportfahrten mit Traktor und Anhänger",
+			"Schwaden von Grasflächen",
+			"Einsatz nach Absprache"
+		]
 	}
 ];
 
@@ -62,22 +87,22 @@ const seasons = [
 	{
 		title: "Frühjahr",
 		timeframe: "März – Mai",
-		tasks: ["Böden lockern & nachsäen", "Sensoren & Stalltechnik warten", "Jungvieh auf die Weiden vorbereiten"]
+		tasks: ["Düngen", "Unkrautbekämpfung & Pflanzenschutz", "Maissaat"]
 	},
 	{
 		title: "Sommer",
 		timeframe: "Juni – August",
-		tasks: ["Grünlandpflege & Heu einbringen", "Maisbestand kontrollieren", "Nachbarschaftshilfe mit Maschinen"]
+		tasks: ["Grünlandpflege", "Getreideernte", "Zwischenfrucht ausähen"]
 	},
 	{
 		title: "Herbst",
 		timeframe: "September – November",
-		tasks: ["Mais- und Getreideernte", "Silagen anlegen", "Felder für den Winter vorbereiten"]
+		tasks: ["Maisernte", "Getreideaussaat", "Grünland für den Winter vorbereiten"]
 	},
 	{
 		title: "Winter",
 		timeframe: "Dezember – Februar",
-		tasks: ["Ruhe im Stall & Kälberbetreuung", "Maschinenservice", "Planung fürs nächste Ausbildungsjahr"]
+		tasks: ["Forstarbeiten", "Maschinenservice"]
 	}
 ];
 
@@ -199,10 +224,10 @@ const seasonMeta = [
 			<!-- ===== EQUIPMENT / MASCHINEN ===== -->
 			<section class="equipment" id="maschinen" aria-labelledby="equipment-heading">
 				<div class="equipment__header">
-					<p class="eyebrow">Technik aus Oberbubach</p>
+					<p class="eyebrow">Technik im Betrieb</p>
 					<h2 id="equipment-heading">Maschinen &amp; Leistungen</h2>
 					<p class="equipment__sub">
-						Moderne Technik hilft uns, zuverlässig zu liefern – auf den eigenen Flächen wie auch bei Nachbarn.
+						Moderne Technik hilft uns, zuverlässig und umwelbewusst zu arbeiten.
 					</p>
 				</div>
 				<div class="equipment__grid">
@@ -330,8 +355,6 @@ const seasonMeta = [
 					<ul class="visit__details">
 						<li><span class="visit__icon">🏠</span><span>{visit.address}</span></li>
 						<li><span class="visit__icon">📅</span><span>Bitte Besuch vorher ankündigen</span></li>
-						<li><span class="visit__icon">🚗</span><span>Parken am Hof – bitte langsam anfahren</span></li>
-						<li><span class="visit__icon">🗺️</span><span>Navigation: „Göttl Hof Oberbubach"</span></li>
 					</ul>
 					<div class="visit__actions">
 						<a class="btn btn--primary" href={visit.mapsLink} target="_blank" rel="noreferrer" data-umami-event="cta-maps">Google Maps Route</a>
