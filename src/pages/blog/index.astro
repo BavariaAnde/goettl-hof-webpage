@@ -20,29 +20,30 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 			{publishedPosts.map((post) => (
 				<article class="blog-card" data-animate="fade">
 					<a
-						class="blog-card__cover"
+						class="blog-card__link"
 						href={asset(`/blog/${post.slug}/`)}
 						aria-label={`${post.title} öffnen`}
 						data-umami-event={`blog-${post.slug}`}
-					></a>
-					<img
-						class="blog-card__image"
-						src={asset(post.heroImage)}
-						alt={post.heroAlt}
-						loading="lazy"
-						decoding="async"
-						width="1200"
-						height="675"
-					/>
-					<div class="blog-card__body">
-						<p class="blog-card__category">{post.category}</p>
-						<h2 class="blog-card__title">{post.title}</h2>
-						<p class="blog-card__meta">
-							{post.date} · {post.readTime} · {post.status}
-						</p>
-						<p class="blog-card__summary">{post.summary}</p>
-						<span class="blog-card__link" aria-hidden="true">Mehr lesen →</span>
-					</div>
+					>
+						<img
+							class="blog-card__image"
+							src={asset(post.heroImage)}
+							alt={post.heroAlt}
+							loading="lazy"
+							decoding="async"
+							width="1200"
+							height="675"
+						/>
+						<div class="blog-card__body">
+							<p class="blog-card__category">{post.category}</p>
+							<h2 class="blog-card__title">{post.title}</h2>
+							<p class="blog-card__meta">
+								{post.date} · {post.readTime} · {post.status}
+							</p>
+							<p class="blog-card__summary">{post.summary}</p>
+							<span class="blog-card__cta" aria-hidden="true">Mehr lesen →</span>
+						</div>
+					</a>
 				</article>
 			))}
 		</div>
@@ -74,7 +75,6 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 	}
 
 	.blog-card {
-		position: relative;
 		background: var(--bg-card);
 		border-radius: 1.2rem;
 		border: 1px solid var(--border);
@@ -96,7 +96,6 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 		object-position: center;
 		background: linear-gradient(135deg, #e2ecd5 0%, #f6f1e7 100%);
 		display: block;
-		pointer-events: none;
 	}
 
 	.blog-card__body {
@@ -105,7 +104,6 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 		flex-direction: column;
 		gap: 0.45rem;
 		min-height: 190px;
-		pointer-events: none;
 	}
 
 	.blog-card__category {
@@ -137,21 +135,29 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 		font-size: 0.9rem;
 	}
 
-	.blog-card__cover {
-		position: absolute;
-		inset: 0;
-		z-index: 3;
-		border-radius: 1.2rem;
+	.blog-card__link {
+		display: flex;
+		flex-direction: column;
+		color: inherit;
+		text-decoration: none;
+		height: 100%;
 	}
 
-	.blog-card > * {
-		position: relative;
-		z-index: 2;
+	.blog-card__link:focus-visible {
+		outline: 3px solid var(--accent-gold);
+		outline-offset: 3px;
+		border-radius: 1.2rem;
 	}
 
 	.blog-card:hover {
 		transform: translateY(-3px);
 		box-shadow: 0 12px 28px var(--shadow);
+	}
+
+	.blog-card__cta {
+		color: var(--accent);
+		font-size: 0.88rem;
+		font-weight: 600;
 	}
 
 	@media (min-width: 640px) {
