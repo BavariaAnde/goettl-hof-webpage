@@ -17,8 +17,14 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 		</header>
 
 		<div class="blog-page__grid" data-animate="fade">
-			{publishedPosts.map((post, i) => (
-				<article class={`blog-card${i === 0 ? ' blog-card--featured' : ''}`} data-animate="fade">
+			{publishedPosts.map((post) => (
+				<article class="blog-card" data-animate="fade">
+					<a
+						class="blog-card__cover"
+						href={asset(`/blog/${post.slug}/`)}
+						aria-label={`${post.title} öffnen`}
+						data-umami-event={`blog-${post.slug}`}
+					></a>
 					<p class="blog-card__category">{post.category}</p>
 					<h2 class="blog-card__title">{post.title}</h2>
 					<p class="blog-card__meta">
@@ -34,7 +40,7 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 						height="675"
 					/>
 					<p class="blog-card__summary">{post.summary}</p>
-					<a class="blog-card__link" href={asset(`/blog/${post.slug}/`)} data-umami-event={`blog-${post.slug}`}>Mehr lesen →</a>
+					<span class="blog-card__link" aria-hidden="true">Mehr lesen →</span>
 				</article>
 			))}
 		</div>
@@ -70,6 +76,7 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 	}
 
 	.blog-card {
+		position: relative;
 		background: var(--bg-card);
 		padding: 1.5rem 1.75rem;
 		display: flex;
@@ -94,6 +101,18 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 		display: block;
 	}
 
+	.blog-card__cover {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		border-radius: 0.85rem;
+	}
+
+	.blog-card > * {
+		position: relative;
+		z-index: 2;
+	}
+
 	.blog-card:hover {
 		transform: translateY(-3px);
 		box-shadow: 0 12px 28px var(--shadow);
@@ -101,11 +120,13 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 
 	@media (min-width: 640px) {
 		.blog-page__grid {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
+	}
 
-		.blog-card--featured {
-			grid-column: 1 / -1;
+	@media (min-width: 1000px) {
+		.blog-page__grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
 		}
 	}
 	</style>
