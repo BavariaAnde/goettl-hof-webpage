@@ -29,7 +29,7 @@ if (!post) {
 				<span>{post.date}</span> · <span>{post.readTime}</span>
 				{post.status && <span class="blog-post__status">{post.status}</span>}
 			</p>
-			<img src={asset(post.heroImage)} alt={post.heroAlt} loading="lazy" width="1200" height="700" />
+			<div class="blog-post__hero-image" style={`--blog-post-image: url(${asset(post.heroImage)})`} role="img" aria-label={post.heroAlt}></div>
 		</div>
 
 		<div class="blog-post__body">
@@ -105,10 +105,15 @@ if (!post) {
 		letter-spacing: 0.08em;
 	}
 
-	.blog-post__hero img {
+	.blog-post__hero-image {
 		width: 100%;
 		border-radius: 1.2rem;
-		object-fit: cover;
+		aspect-ratio: 16 / 9;
+		background-image: var(--blog-post-image, none), linear-gradient(135deg, #e2ecd5 0%, #f6f1e7 100%);
+		background-size: cover;
+		background-position: center;
+		border: 1px solid var(--border);
+		box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
 	}
 
 	.blog-post__body section {

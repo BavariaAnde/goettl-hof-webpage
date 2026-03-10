@@ -24,6 +24,7 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 					<p class="blog-card__meta">
 						{post.date} · {post.readTime} · {post.status}
 					</p>
+					<div class="blog-card__image" style={`--blog-card-image: url(${asset(post.heroImage)})`} aria-hidden="true"></div>
 					<p class="blog-card__summary">{post.summary}</p>
 					<a class="blog-card__link" href={asset(`/blog/${post.slug}/`)} data-umami-event={`blog-${post.slug}`}>Mehr lesen →</a>
 				</article>
@@ -75,10 +76,13 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 	.blog-card__image {
 		width: 100%;
 		height: 220px;
-		object-fit: cover;
 		border-radius: 0.85rem;
-		margin: 0.4rem 0 0.4rem;
-		background: var(--bg-soft);
+		margin: 0.4rem 0 0.75rem;
+		background-image: var(--blog-card-image, none), linear-gradient(135deg, #e2ecd5 0%, #f6f1e7 100%);
+		background-size: cover;
+		background-position: center;
+		border: 1px solid var(--border);
+		box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
 	}
 
 	@media (min-width: 640px) {
