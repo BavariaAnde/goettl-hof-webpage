@@ -149,6 +149,9 @@ const seasonMeta = [
 <Layout
 	title="Göttl Hof – Oberbubach/ Roßbach"
 	description="Familienbetrieb in Oberbubach (Roßbach): Milchvieh, Felder, Ausbildung und Nachbarschaftshilfe nach Absprache."
+	preloadImage={asset("images/hof-panorama-sicht2-januar.webp")}
+	preloadImageType="image/webp"
+	preloadImageSizes="100vw"
 >
 	<Nav isHome={true} />
 
@@ -162,6 +165,9 @@ const seasonMeta = [
 				alt="Göttl Hof im Winter – Panoramablick über Oberbubach"
 				width="1600"
 				height="900"
+				sizes="100vw"
+				loading="eager"
+				decoding="async"
 				fetchpriority="high"
 			/>
 			<div class="hero__gradient" aria-hidden="true"></div>
@@ -197,7 +203,7 @@ const seasonMeta = [
 			</section>
 
 			<!-- ===== CORNERSTONES / HOF ===== -->
-			<section class="cornerstones" id="hof" aria-labelledby="cornerstones-heading">
+			<section class="cornerstones" id="hof" aria-labelledby="cornerstones-heading" data-animate="fade">
 				<div class="cornerstones__text">
 					<p class="eyebrow">Was uns ausmacht</p>
 					<h2 id="cornerstones-heading">Zwei Standbeine,<br/>ein Betrieb</h2>
@@ -222,7 +228,7 @@ const seasonMeta = [
 			</section>
 
 			<!-- ===== EQUIPMENT / MASCHINEN ===== -->
-			<section class="equipment" id="maschinen" aria-labelledby="equipment-heading">
+			<section class="equipment" id="maschinen" aria-labelledby="equipment-heading" data-animate="fade">
 				<div class="equipment__header">
 					<p class="eyebrow">Technik im Betrieb</p>
 					<h2 id="equipment-heading">Maschinen &amp; Leistungen</h2>
@@ -247,13 +253,14 @@ const seasonMeta = [
 			</section>
 
 			<!-- ===== GALLERY ===== -->
-			<section class="gallery" aria-label="Hof Impressionen">
+			<section class="gallery" aria-label="Hof Impressionen" data-animate="fade">
 				{gallery.map((shot) => (
 					<figure class="gallery__item">
 						<img
 							src={shot.image}
 							alt={shot.title}
 							loading="lazy"
+							decoding="async"
 							width="480"
 							height="360"
 						/>
@@ -263,7 +270,7 @@ const seasonMeta = [
 			</section>
 
 			<!-- ===== SEASONS "Unser Jahr" ===== -->
-			<section class="seasons" aria-labelledby="seasons-heading">
+			<section class="seasons" aria-labelledby="seasons-heading" data-animate="fade">
 				<div class="seasons__intro">
 					<p class="eyebrow">Der Rhythmus des Jahres</p>
 					<h2 id="seasons-heading">Unser Jahr am Hof</h2>
@@ -288,7 +295,7 @@ const seasonMeta = [
 			</section>
 
 			<!-- ===== TRAINING / AUSBILDUNG ===== -->
-			<section class="training" id="ausbildung" aria-labelledby="training-heading">
+			<section class="training" id="ausbildung" aria-labelledby="training-heading" data-animate="fade">
 				<div class="training__info">
 					<p class="eyebrow">Ausbildung &amp; Mitarbeit</p>
 					<h2 id="training-heading">Landwirtschaft<br/>wirklich lernen</h2>
@@ -317,6 +324,7 @@ const seasonMeta = [
 						src={asset("images/kuh-mit-kalb.jpg")}
 						alt="Kuh mit Kalb im Stall"
 						loading="lazy"
+						decoding="async"
 						width="560"
 						height="400"
 						class="training__image"
@@ -329,7 +337,7 @@ const seasonMeta = [
 			</section>
 
 			<!-- ===== FAQ ===== -->
-			<section class="faq" aria-labelledby="faq-heading">
+			<section class="faq" aria-labelledby="faq-heading" data-animate="fade">
 				<div class="faq__head">
 					<p class="eyebrow">Häufige Fragen</p>
 					<h2 id="faq-heading">Fragen, die wir oft hören</h2>
@@ -348,7 +356,7 @@ const seasonMeta = [
 			</section>
 
 			<!-- ===== VISIT / ANFAHRT ===== -->
-			<section class="visit" id="anfahrt" aria-labelledby="visit-heading">
+			<section class="visit" id="anfahrt" aria-labelledby="visit-heading" data-animate="fade">
 				<div class="visit__info">
 					<p class="eyebrow">So findet ihr uns</p>
 					<h2 id="visit-heading">Anfahrt &amp; Besuch</h2>
@@ -373,7 +381,7 @@ const seasonMeta = [
 			</section>
 
 			<!-- ===== BLOG ===== -->
-			<section class="blog" id="blog" aria-labelledby="blog-heading">
+			<section class="blog" id="blog" aria-labelledby="blog-heading" data-animate="fade">
 				<div class="blog__head">
 					<p class="eyebrow">Vom Hof</p>
 					<h2 id="blog-heading">Blog &amp; Aktuelles</h2>
@@ -396,7 +404,7 @@ const seasonMeta = [
 		</div><!-- end .page -->
 
 		<!-- ===== CONTACT – volle Breite, grüner Bereich ===== -->
-		<section class="contact" id="contact" aria-labelledby="contact-heading">
+		<section class="contact" id="contact" aria-labelledby="contact-heading" data-animate="fade">
 			<div class="contact__inner">
 				<p class="contact__eyebrow">Direkt in Kontakt</p>
 				<h2 id="contact-heading">Kontakt &amp; Rückfragen</h2>
@@ -427,33 +435,13 @@ const seasonMeta = [
 			<a href="/datenschutz">Datenschutz</a>
 		</nav>
 	</footer>
+
 </Layout>
 
 <style>
 /* ============================================================
    GLOBAL / RESET
    ============================================================ */
-:global(html) {
-	scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	:global(html) { scroll-behavior: auto; }
-	:global(*), :global(*::before), :global(*::after) {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-	}
-}
-
-:global(body) {
-	margin: 0;
-	background: var(--bg);
-	color: var(--text);
-	font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-	transition: background 0.3s, color 0.3s;
-}
-
 /* ============================================================
    FOCUS VISIBLE
    ============================================================ */
@@ -601,6 +589,7 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 	padding-left: clamp(1.5rem, 5vw, 4rem);
 	padding-right: clamp(1.5rem, 5vw, 4rem);
 	padding-bottom: clamp(2.5rem, 5vw, 4rem);
+	animation: heroContent 0.8s ease 0.05s both;
 }
 
 .hero__eyebrow {
@@ -660,6 +649,11 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 	color: rgba(255, 255, 255, 0.5);
 	margin: 0;
 	letter-spacing: 0.01em;
+}
+
+@keyframes heroContent {
+	from { opacity: 0; transform: translateY(12px); }
+	to { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================================
@@ -892,6 +886,7 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 .equip-card {
 	border-top: 3px solid var(--accent-gold);
 	background: var(--bg-card);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .equip-card:nth-child(even) {
@@ -1035,6 +1030,7 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 	background: var(--bg-card);
 	padding: 1.5rem;
 	border-top: 4px solid var(--season-color);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .season-card__top {
@@ -1405,6 +1401,7 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .blog-card:nth-child(even) { background: var(--bg-soft); }
@@ -1460,6 +1457,13 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 	transition: color 0.2s;
 }
 .blog-card__link:hover { color: var(--accent-dark); }
+
+.equip-card:hover,
+.season-card:hover,
+.blog-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 12px 28px var(--shadow);
+}
 
 @media (min-width: 640px) {
 	.blog__grid {

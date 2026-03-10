@@ -7,11 +7,17 @@ import "@fontsource/playfair-display/600.css";
 interface Props {
 	title?: string;
 	description?: string;
+	preloadImage?: string;
+	preloadImageType?: string;
+	preloadImageSizes?: string;
 }
 
 const {
 	title = "Göttl Hof",
-	description = "Familienbetrieb aus Niederbayern mit Milchvieh, Feldern und Herz."
+	description = "Familienbetrieb aus Niederbayern mit Milchvieh, Feldern und Herz.",
+	preloadImage,
+	preloadImageType = "image/webp",
+	preloadImageSizes = "100vw"
 } = Astro.props as Props;
 const siteUrl = "https://www.goettl-oberbubach.de";
 const shareImage = `${siteUrl}/images/hof-panorama-sommer.webp`;
@@ -40,6 +46,15 @@ const shareImage = `${siteUrl}/images/hof-panorama-sommer.webp`;
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={shareImage} />
+		{preloadImage ? (
+			<link
+				rel="preload"
+				as="image"
+				href={preloadImage}
+				type={preloadImageType}
+				imagesizes={preloadImageSizes}
+			/>
+		) : null}
 		<meta name="google-site-verification" content="x5y1DFHNc_uxCcfaeaOx-FitVM5GWp-4mBQwJ6c9gkU" />
 
 		<script type="application/ld+json">{JSON.stringify({
@@ -81,6 +96,25 @@ const shareImage = `${siteUrl}/images/hof-panorama-sommer.webp`;
 				const isDark = document.documentElement.classList.toggle('dark');
 				localStorage.setItem('darkMode', String(isDark));
 			});
+		</script>
+		<script is:inline>
+			(() => {
+				if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+					document.querySelectorAll('[data-animate]').forEach((el) => el.classList.add('in-view'));
+					return;
+				}
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('in-view');
+							observer.unobserve(entry.target);
+						}
+					});
+				}, { rootMargin: '0px 0px -10% 0px', threshold: 0.2 });
+
+				document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
+			})();
 		</script>
 		<!-- Umami Analytics -->
 		<script defer src="https://stats.goettl-oberbubach.de/script.js" data-website-id="bb33e9e8-6b5d-45f7-8d3d-4d5b6983e80e"></script>
@@ -142,5 +176,29 @@ const shareImage = `${siteUrl}/images/hof-panorama-sommer.webp`;
 	.toggle-icon--dark { display: none; }
 	html.dark .toggle-icon--light { display: none; }
 	html.dark .toggle-icon--dark  { display: inline; }
+
+	:global(html) {
+		scroll-behavior: smooth;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:global(html) { scroll-behavior: auto; }
+		:global(*), :global(*::before), :global(*::after) {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+
+	:global([data-animate]) {
+		opacity: 0;
+		transform: translateY(14px);
+		transition: opacity 0.6s ease, transform 0.6s ease;
+	}
+
+	:global([data-animate].in-view) {
+		opacity: 1;
+		transform: translateY(0);
+	}
 
 </style>

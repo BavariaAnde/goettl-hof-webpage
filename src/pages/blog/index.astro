@@ -9,22 +9,30 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 ---
 <Layout title="Blog & Aktuelles – Göttl Hof" description="Aktuelle Themen rund um Hofleben, Ausbildung und Maschinen.">
 	<Nav />
-	<section class="blog-page">
-		<header class="blog-page__head">
+	<section class="blog-page" data-animate="fade">
+		<header class="blog-page__head" data-animate="fade">
 			<p class="eyebrow">Aktuelles</p>
 			<h1>Blog &amp; Einblicke</h1>
 			<p>Kurze Updates aus Oberbubach – zum Hofleben, zur Ausbildung und zur Technik, mit der wir arbeiten.</p>
 		</header>
 
-		<div class="blog-page__grid">
+		<div class="blog-page__grid" data-animate="fade">
 			{publishedPosts.map((post, i) => (
-				<article class={`blog-card${i === 0 ? ' blog-card--featured' : ''}`}>
+				<article class={`blog-card${i === 0 ? ' blog-card--featured' : ''}`} data-animate="fade">
 					<p class="blog-card__category">{post.category}</p>
 					<h2 class="blog-card__title">{post.title}</h2>
 					<p class="blog-card__meta">
 						{post.date} · {post.readTime} · {post.status}
 					</p>
-					<div class="blog-card__image" style={`--blog-card-image: url(${asset(post.heroImage)})`} aria-hidden="true"></div>
+					<img
+						class="blog-card__image"
+						src={asset(post.heroImage)}
+						alt={post.heroAlt}
+						loading="lazy"
+						decoding="async"
+						width="1200"
+						height="675"
+					/>
 					<p class="blog-card__summary">{post.summary}</p>
 					<a class="blog-card__link" href={asset(`/blog/${post.slug}/`)} data-umami-event={`blog-${post.slug}`}>Mehr lesen →</a>
 				</article>
@@ -67,6 +75,7 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
 	}
 
 	.blog-card:nth-child(even) {
@@ -78,11 +87,16 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 		height: 220px;
 		border-radius: 0.85rem;
 		margin: 0.4rem 0 0.75rem;
-		background-image: var(--blog-card-image, none), linear-gradient(135deg, #e2ecd5 0%, #f6f1e7 100%);
-		background-size: cover;
-		background-position: center;
+		object-fit: cover;
+		background: linear-gradient(135deg, #e2ecd5 0%, #f6f1e7 100%);
 		border: 1px solid var(--border);
 		box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+		display: block;
+	}
+
+	.blog-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 12px 28px var(--shadow);
 	}
 
 	@media (min-width: 640px) {

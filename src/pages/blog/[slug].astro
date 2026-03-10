@@ -19,9 +19,15 @@ if (!post) {
 	return Astro.redirect("/blog");
 }
 ---
-<Layout title={`${post.title} – Göttl Hof`} description={post.summary}>
+<Layout
+	title={`${post.title} – Göttl Hof`}
+	description={post.summary}
+	preloadImage={asset(post.heroImage)}
+	preloadImageType="image/webp"
+	preloadImageSizes="100vw"
+>
 	<Nav />
-	<article class="blog-post">
+	<article class="blog-post" data-animate="fade">
 		<div class="blog-post__hero">
 			<p class="blog-post__category">{post.category}</p>
 			<h1>{post.title}</h1>
@@ -29,12 +35,22 @@ if (!post) {
 				<span>{post.date}</span> · <span>{post.readTime}</span>
 				{post.status && <span class="blog-post__status">{post.status}</span>}
 			</p>
-			<div class="blog-post__hero-image" style={`--blog-post-image: url(${asset(post.heroImage)})`} role="img" aria-label={post.heroAlt}></div>
+			<img
+				class="blog-post__hero-image"
+				src={asset(post.heroImage)}
+				alt={post.heroAlt}
+				width="1600"
+				height="900"
+				sizes="100vw"
+				loading="eager"
+				decoding="async"
+				fetchpriority="high"
+			/>
 		</div>
 
 		<div class="blog-post__body">
 			{post.content.map((section) => (
-				<section>
+				<section data-animate="fade">
 					{section.heading && <h2>{section.heading}</h2>}
 					{section.paragraphs.map((paragraph) => (
 						<p>{paragraph}</p>
@@ -51,13 +67,13 @@ if (!post) {
 		</div>
 
 		{post.cta && (
-			<div class="blog-post__cta">
+			<div class="blog-post__cta" data-animate="fade">
 				<a class="btn btn--primary" href={asset(post.cta.href)} data-umami-event={`cta-${post.slug}`}>{post.cta.label}</a>
 			</div>
 		)}
 	</article>
 
-	<section class="blog-post__back">
+	<section class="blog-post__back" data-animate="fade">
 		<a class="blog-post__backlink" href={asset("/blog/")}>
 			← Zurück zur Übersicht
 		</a>
@@ -109,11 +125,11 @@ if (!post) {
 		width: 100%;
 		border-radius: 1.2rem;
 		aspect-ratio: 16 / 9;
-		background-image: var(--blog-post-image, none), linear-gradient(135deg, #e2ecd5 0%, #f6f1e7 100%);
-		background-size: cover;
-		background-position: center;
+		object-fit: cover;
+		background: linear-gradient(135deg, #e2ecd5 0%, #f6f1e7 100%);
 		border: 1px solid var(--border);
 		box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+		display: block;
 	}
 
 	.blog-post__body section {
