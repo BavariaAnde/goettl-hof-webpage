@@ -132,7 +132,7 @@ if (!post) {
 		max-width: 620px;
 		margin: 0.35rem auto 0;
 		border-radius: 1.2rem;
-		aspect-ratio: 4 / 3;
+		max-height: 400px;
 		object-fit: cover;
 		object-position: center;
 		background: var(--bg-strong);
@@ -202,5 +202,9 @@ if (!post) {
 			max-width: 720px;
 		}
 	}
-	</style>
+	@media (max-width: 767px) {
+		.blog-post__hero-image {
+			max-height: 250px;
+		}
+	}	</style>
 </Layout>
