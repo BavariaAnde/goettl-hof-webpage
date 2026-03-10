@@ -86,7 +86,7 @@ export const blogPosts: BlogPost[] = [
 		],
 		cta: {
 			label: "Maschinen anfragen",
-			href: "/#maschinen"
+			href: "/#hof"
 		}
 	}
 ];

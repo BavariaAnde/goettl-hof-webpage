@@ -14,19 +14,6 @@ const stats = [
 	{ label: "Ausbildung", value: "Start 1. August" }
 ];
 
-const cornerstones = [
-	{
-		title: "Milchvieh",
-		description: "Ruhige Herde, Laufstall, viel Handarbeit und Sensoren, die uns unterstützen.",
-		bullets: ["Melken früh & abends", "Eigenes Futter", "Tierwohl zuerst", "Modernes Futtermanagement"]
-	},
-	{
-		title: "Felder & Maschinen",
-		description: "Grünlandpflege, Getreide, Mais und Nachbarschaftshilfe.",
-		bullets: ["Fendt, Claas, Pöttinger, Deutz Fahr, Lemken", "Bodenschonende Bearbeitung", "Helfen wenn wer Hilfe braucht"]
-	}
-];
-
 const equipment = [
 	{
 		title: "Zugmaschinen",
@@ -202,38 +189,13 @@ const seasonMeta = [
 				))}
 			</section>
 
-			<!-- ===== CORNERSTONES / HOF ===== -->
-			<section class="cornerstones" id="hof" aria-labelledby="cornerstones-heading" data-animate="fade">
-				<div class="cornerstones__text">
-					<p class="eyebrow">Was uns ausmacht</p>
-					<h2 id="cornerstones-heading">Zwei Standbeine,<br/>ein Betrieb</h2>
-					<p>
-						Wir stehen morgens mit den Kühen auf, helfen Nachbarn mit Maschinen, führen Buch über Felder und geben
-						Erfahrung weiter. Ruhig, ehrlich, bodenständig.
-					</p>
-				</div>
-				<div class="cornerstones__cards">
-					{cornerstones.map((block) => (
-						<article class="cornerstone-card">
-							<h3>{block.title}</h3>
-							<p>{block.description}</p>
-							<ul class="cornerstone-card__list">
-								{block.bullets.map((item) => (
-									<li><span class="bullet-mark" aria-hidden="true">▪</span>{item}</li>
-								))}
-							</ul>
-						</article>
-					))}
-				</div>
-			</section>
-
 			<!-- ===== EQUIPMENT / MASCHINEN ===== -->
-			<section class="equipment" id="maschinen" aria-labelledby="equipment-heading" data-animate="fade">
+			<section class="equipment" id="hof" aria-labelledby="equipment-heading" data-animate="fade">
 				<div class="equipment__header">
-					<p class="eyebrow">Technik im Betrieb</p>
-					<h2 id="equipment-heading">Maschinen &amp; Leistungen</h2>
+					<p class="eyebrow">Hof &amp; Technik</p>
+					<h2 id="equipment-heading">Maschinen, Felder &amp; Alltag</h2>
 					<p class="equipment__sub">
-						Moderne Technik hilft uns, zuverlässig und umwelbewusst zu arbeiten.
+						Milchvieh, Feldarbeit und Nachbarschaftshilfe – bodenständig, zuverlässig, direkt vor Ort.
 					</p>
 				</div>
 				<div class="equipment__grid">
@@ -496,8 +458,8 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 	display: flex;
 	flex-direction: column;
 	gap: clamp(3rem, 6vw, 5rem);
-	padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2.5rem);
-	max-width: 1280px;
+	padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 3rem);
+	max-width: 1400px;
 	width: 100%;
 	margin: 0 auto;
 	box-sizing: border-box;
@@ -584,7 +546,7 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 	margin: 0 auto;
 	padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
 	padding-top: 0;
-	max-width: 780px;
+	max-width: 820px;
 	margin: 0;
 	padding-left: clamp(1.5rem, 5vw, 4rem);
 	padding-right: clamp(1.5rem, 5vw, 4rem);
@@ -610,13 +572,14 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 	margin: 0 0 1.1rem;
 	letter-spacing: -0.01em;
 	text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+	max-width: 14ch;
 }
 
 .hero__lead {
 	font-size: clamp(1rem, 1.8vw, 1.15rem);
 	line-height: 1.65;
 	color: rgba(255, 255, 255, 0.82);
-	max-width: 50ch;
+	max-width: 52ch;
 	margin: 0 0 1.75rem;
 }
 
@@ -733,6 +696,7 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 	border-radius: 1.2rem;
 	background: var(--bg-card);
 	overflow: hidden;
+	box-shadow: 0 10px 30px var(--shadow);
 }
 
 .stats__item {
@@ -769,86 +733,6 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 	font-size: 0.82rem;
 	color: var(--text-muted);
 	letter-spacing: 0.04em;
-}
-
-/* ============================================================
-   CORNERSTONES / HOF
-   ============================================================ */
-.cornerstones {
-	display: flex;
-	flex-direction: column;
-	gap: clamp(1.5rem, 3vw, 2.5rem);
-}
-
-.cornerstones__text {
-	max-width: 340px;
-}
-
-.cornerstones__text h2 {
-	font-size: clamp(1.8rem, 4vw, 2.6rem);
-	margin: 0 0 0.85rem;
-	line-height: 1.15;
-}
-
-.cornerstones__text p {
-	color: var(--text-muted);
-	line-height: 1.7;
-	margin: 0;
-}
-
-.cornerstones__cards {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 1rem;
-}
-
-.cornerstone-card {
-	border-left: 3px solid var(--accent);
-	padding: 1.25rem 1.25rem 1.25rem 1.5rem;
-	background: var(--bg-card);
-}
-
-.cornerstone-card h3 {
-	font-family: "Playfair Display", serif;
-	font-size: 1.15rem;
-	margin: 0 0 0.5rem;
-}
-
-.cornerstone-card p {
-	color: var(--text-muted);
-	line-height: 1.65;
-	margin: 0 0 0.75rem;
-	font-size: 0.93rem;
-}
-
-.cornerstone-card__list {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	gap: 0.3rem;
-}
-
-.cornerstone-card__list li {
-	display: flex;
-	align-items: baseline;
-	gap: 0.3rem;
-	font-size: 0.88rem;
-	color: var(--text-muted);
-}
-
-@media (min-width: 768px) {
-	.cornerstones {
-		display: grid;
-		grid-template-columns: 300px 1fr;
-		align-items: start;
-		gap: 3rem;
-	}
-	.cornerstones__text { max-width: none; }
-	.cornerstones__cards {
-		grid-template-columns: 1fr 1fr;
-	}
 }
 
 /* ============================================================
@@ -992,6 +876,52 @@ html.dark .nav__dark-toggle .toggle-icon--dark { display: inline; }
 
 @media (min-width: 480px) {
 	.gallery { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1100px) {
+	.hero {
+		min-height: 78vh;
+	}
+
+	.hero__content-inner {
+		max-width: 960px;
+		padding-left: clamp(3rem, 7vw, 7rem);
+		padding-right: clamp(2rem, 5vw, 5rem);
+	}
+
+	.gallery { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1200px) {
+	.page {
+		padding-top: clamp(3rem, 5vw, 5rem);
+		padding-bottom: clamp(3rem, 5vw, 5rem);
+	}
+
+	.equipment__grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.blog__grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.blog-card--featured {
+		grid-column: 1 / span 2;
+	}
+
+	.training {
+		grid-template-columns: 1.05fr 0.95fr;
+	}
+}
+
+@media (min-width: 1400px) {
+	.hero__content h1 {
+		font-size: clamp(3.2rem, 4vw, 5rem);
+	}
+
+	.page {
+		gap: clamp(3.5rem, 5vw, 6rem);
+	}
 }
 
 /* ============================================================
