@@ -66,11 +66,11 @@ if (!post) {
 			))}
 		</div>
 
-		{post.cta && (
-			<div class="blog-post__cta" data-animate="fade">
-				<a class="btn btn--primary" href={asset(post.cta.href)} data-umami-event={`cta-${post.slug}`}>{post.cta.label}</a>
-			</div>
-		)}
+	{post.cta && (
+		<div class="blog-post__cta" data-animate="fade">
+			<a class="btn btn--primary" href={asset(post.cta.href)} data-umami-event={`blog:cta:${post.slug}`}>{post.cta.label}</a>
+		</div>
+	)}
 	</article>
 
 	<section class="blog-post__back" data-animate="fade">

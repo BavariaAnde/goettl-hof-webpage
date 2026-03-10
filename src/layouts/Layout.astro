@@ -116,6 +116,34 @@ const shareImage = `${siteUrl}/images/hof-panorama-sommer.webp`;
 				document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
 			})();
 		</script>
+		<script is:inline>
+			(() => {
+				const trackWhenReady = (name) => {
+					let tries = 0;
+					const tick = () => {
+						if (window.umami && typeof window.umami.track === 'function') {
+							window.umami.track(name);
+							return;
+						}
+						tries += 1;
+						if (tries < 20) setTimeout(tick, 300);
+					};
+					tick();
+				};
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							const name = entry.target.getAttribute('data-umami-view');
+							if (name) trackWhenReady(name);
+							observer.unobserve(entry.target);
+						}
+					});
+				}, { rootMargin: '0px 0px -20% 0px', threshold: 0.3 });
+
+				document.querySelectorAll('[data-umami-view]').forEach((el) => observer.observe(el));
+			})();
+		</script>
 		<!-- Umami Analytics -->
 		<script defer src="https://stats.goettl-oberbubach.de/script.js" data-website-id="bb33e9e8-6b5d-45f7-8d3d-4d5b6983e80e"></script>
 	</body>

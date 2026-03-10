@@ -23,7 +23,7 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 						class="blog-card__link"
 						href={asset(`/blog/${post.slug}/`)}
 						aria-label={`${post.title} öffnen`}
-						data-umami-event={`blog-${post.slug}`}
+						data-umami-event={`blog:open:${post.slug}`}
 					>
 						<img
 							class="blog-card__image"

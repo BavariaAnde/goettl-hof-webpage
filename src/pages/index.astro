@@ -167,8 +167,8 @@ const seasonMeta = [
 						Nachbarn mit Technik und Erfahrung.
 					</p>
 					<div class="hero__actions">
-						<a class="btn btn--gold" href="#contact" data-umami-event="cta-hero-contact">Kontakt aufnehmen</a>
-						<a class="hero__link" href="#ausbildung" data-umami-event="cta-hero-ausbildung">Ausbildung ab 1. August →</a>
+						<a class="btn btn--gold" href="#contact" data-umami-event="cta:hero:contact">Kontakt aufnehmen</a>
+						<a class="hero__link" href="#ausbildung" data-umami-event="cta:hero:ausbildung">Ausbildung ab 1. August →</a>
 					</div>
 					<p class="hero__hint">Besuche bitte kurz vorher ankündigen – dann nehmen wir uns Zeit für euch.</p>
 				</div>
@@ -257,7 +257,7 @@ const seasonMeta = [
 			</section>
 
 			<!-- ===== TRAINING / AUSBILDUNG ===== -->
-			<section class="training" id="ausbildung" aria-labelledby="training-heading" data-animate="fade">
+			<section class="training" id="ausbildung" aria-labelledby="training-heading" data-animate="fade" data-umami-view="view:ausbildung">
 				<div class="training__info">
 					<p class="eyebrow">Ausbildung &amp; Mitarbeit</p>
 					<h2 id="training-heading">Landwirtschaft<br/>wirklich lernen</h2>
@@ -293,7 +293,7 @@ const seasonMeta = [
 					/>
 					<div class="training__cta-box">
 						<p>Sprich uns an, erzähl kurz wer du bist – wir melden uns fix.</p>
-						<a class="btn btn--primary" href="#contact" data-umami-event="cta-training-box">Ausbildung anfragen</a>
+						<a class="btn btn--primary" href="#contact" data-umami-event="cta:training:box">Ausbildung anfragen</a>
 					</div>
 				</div>
 			</section>
@@ -327,7 +327,7 @@ const seasonMeta = [
 						<li><span class="visit__icon">📅</span><span>Bitte Besuch vorher ankündigen</span></li>
 					</ul>
 					<div class="visit__actions">
-						<a class="btn btn--primary" href={visit.mapsLink} target="_blank" rel="noreferrer" data-umami-event="cta-maps">Google Maps Route</a>
+						<a class="btn btn--primary" href={visit.mapsLink} target="_blank" rel="noreferrer" data-umami-event="cta:maps">Google Maps Route</a>
 					</div>
 				</div>
 				<div class="visit__map">
@@ -343,7 +343,7 @@ const seasonMeta = [
 			</section>
 
 			<!-- ===== BLOG ===== -->
-			<section class="blog" id="blog" aria-labelledby="blog-heading" data-animate="fade">
+			<section class="blog" id="blog" aria-labelledby="blog-heading" data-animate="fade" data-umami-view="view:blog">
 				<div class="blog__head">
 					<p class="eyebrow">Vom Hof</p>
 					<h2 id="blog-heading">Blog &amp; Aktuelles</h2>
@@ -357,7 +357,7 @@ const seasonMeta = [
 								<time datetime={post.date}>{post.date}</time>&ensp;·&ensp;{post.readTime}
 							</p>
 							<p class="blog-card__summary">{post.summary}</p>
-							<a class="blog-card__link" href={asset(`/blog/${post.slug}/`)} data-umami-event={`blog-${post.slug}`}>Mehr lesen →</a>
+							<a class="blog-card__link" href={asset(`/blog/${post.slug}/`)} data-umami-event={`blog:open:${post.slug}`}>Mehr lesen →</a>
 						</article>
 					))}
 				</div>
@@ -366,21 +366,21 @@ const seasonMeta = [
 		</div><!-- end .page -->
 
 		<!-- ===== CONTACT – volle Breite, grüner Bereich ===== -->
-		<section class="contact" id="contact" aria-labelledby="contact-heading" data-animate="fade">
+		<section class="contact" id="contact" aria-labelledby="contact-heading" data-animate="fade" data-umami-view="view:contact">
 			<div class="contact__inner">
 				<p class="contact__eyebrow">Direkt in Kontakt</p>
 				<h2 id="contact-heading">Kontakt &amp; Rückfragen</h2>
 				<p>Wir freuen uns über eure Nachricht – am besten erreichbar täglich zwischen 18 und 20 Uhr.</p>
 				<div class="contact__buttons">
-					<a class="btn btn--contact-primary" href="tel:+4985641268" data-umami-event="cta-call">
+					<a class="btn btn--contact-primary" href="tel:+4985641268" data-umami-event="cta:contact:call">
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15.92z"/></svg>
 						Anrufen
 					</a>
-					<a class="btn btn--contact-outline" href="mailto:info@goettl-oberbubach.de" data-umami-event="cta-email">
+					<a class="btn btn--contact-outline" href="mailto:info@goettl-oberbubach.de" data-umami-event="cta:contact:email">
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
 						Mail schreiben
 					</a>
-					<a class="btn btn--wa" href="https://wa.me/491605925821" target="_blank" rel="noreferrer" data-umami-event="cta-whatsapp">
+					<a class="btn btn--wa" href="https://wa.me/491605925821" target="_blank" rel="noreferrer" data-umami-event="cta:contact:whatsapp">
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 						WhatsApp
 					</a>
