@@ -29,19 +29,21 @@ if (!post) {
 	<Nav />
 	<article class="blog-post" data-animate="fade">
 		<div class="blog-post__hero">
-			<p class="blog-post__category">{post.category}</p>
-			<h1>{post.title}</h1>
-			<p class="blog-post__meta">
-				<span>{post.date}</span> · <span>{post.readTime}</span>
-				{post.status && <span class="blog-post__status">{post.status}</span>}
-			</p>
+			<div class="blog-post__hero-text">
+				<p class="blog-post__category">{post.category}</p>
+				<h1>{post.title}</h1>
+				<p class="blog-post__meta">
+					<span>{post.date}</span> · <span>{post.readTime}</span>
+					{post.status && <span class="blog-post__status">{post.status}</span>}
+				</p>
+			</div>
 			<img
 				class="blog-post__hero-image"
 				src={asset(post.heroImage)}
 				alt={post.heroAlt}
 				width="1600"
 				height="900"
-				sizes="100vw"
+				sizes="(min-width: 900px) 40vw, 100vw"
 				loading="eager"
 				decoding="async"
 				fetchpriority="high"
@@ -89,6 +91,18 @@ if (!post) {
 		gap: 2rem;
 	}
 
+	.blog-post__hero {
+		display: grid;
+		gap: 1.5rem;
+		align-items: center;
+	}
+
+	.blog-post__hero-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
 	.blog-post__hero h1 {
 		font-family: "Playfair Display", serif;
 		font-size: clamp(2rem, 5vw, 3rem);
@@ -123,8 +137,8 @@ if (!post) {
 
 	.blog-post__hero-image {
 		width: 100%;
-		max-width: 640px;
-		margin: 0 auto;
+		max-width: 520px;
+		margin: 0;
 		border-radius: 1.2rem;
 		aspect-ratio: 4 / 3;
 		object-fit: cover;
@@ -174,6 +188,25 @@ if (!post) {
 
 	.blog-post__backlink:hover {
 		color: var(--accent-dark);
+	}
+
+	@media (min-width: 900px) {
+		.blog-post {
+			max-width: 1020px;
+		}
+
+		.blog-post__hero {
+			grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+			gap: 2rem;
+		}
+
+		.blog-post__hero h1 {
+			font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+		}
+
+		.blog-post__body {
+			max-width: 72ch;
+		}
 	}
 	</style>
 </Layout>
