@@ -129,8 +129,8 @@ if (!post) {
 
 	.blog-post__hero-image {
 		width: 100%;
-		max-width: 720px;
-		margin: 0.5rem 0 0;
+		max-width: 520px;
+		margin: 0.4rem 0 0;
 		border-radius: 1.2rem;
 		aspect-ratio: 16 / 9;
 		object-fit: cover;
@@ -194,6 +194,12 @@ if (!post) {
 
 		.blog-post__body {
 			max-width: 72ch;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.blog-post__hero-image {
+			max-width: 460px;
 		}
 	}
 	</style>

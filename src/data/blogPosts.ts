@@ -27,33 +27,29 @@ export const blogPosts: BlogPost[] = [
 		category: "Hofleben",
 		readTime: "4 Min.",
 		status: "Live",
-		summary: "Seit Sommer 2024 messen Smaxtec-Bolus-Sensoren Temperatur & Aktivität – Gesundheits- und Brunstüberwachung laufen jetzt digital.",
+		summary: "Seit Sommer 2024 messen Smaxtec-Bolus-Sensoren Temperatur und Aktivität. So erkennen wir früher, wenn etwas nicht passt, und handeln rechtzeitig.",
 		heroImage: "/images/blog/smaxtec-system.webp",
 		heroAlt: "Smaxtec Sensoren und Dashboard",
 		content: [
 			{
 				paragraphs: [
-					"Wir haben Smaxtec im Sommer 2024 eingeführt. Jeder Bolus misst Körpertemperatur und Aktivität direkt im Pansen – 24/7, ohne Stress für die Kuh.",
-					"Das Dashboard meldet jede Abweichung sofort. Wir sind früher im Stall und behandeln, bevor aus einer Unruhe eine Euter- oder Lungenentzündung wird."
+					"Wir haben Smaxtec im Sommer 2024 eingeführt. Jeder Bolus misst Körpertemperatur und Aktivität direkt im Pansen – rund um die Uhr, ohne Stress für die Kuh.",
+					"Das Dashboard meldet Abweichungen früh. So sind wir schneller im Stall und behandeln, bevor es zu einer Euter- oder Lungenentzündung kommt."
 				]
 			},
 			{
-				heading: "Was sich spürbar verbessert hat",
+				heading: "Was sich für uns verbessert hat",
 				list: [
-					"Weniger akute Krankheitsfälle – wir greifen früh ein",
-					"Brunstüberwachung sitzt – kaum Fehlbesamungen",
-					"Abkalbezeitpunkt wird punktgenau angezeigt – wir geben gezielt Calcium gegen Milchfieber",
-					"Schwangerschaften werden eng begleitet – Fehlgeburten sind selten geworden"
+					"Weniger akute Fälle, weil wir früher reagieren",
+					"Brunst erkennen wir zuverlässiger",
+					"Der Abkalbezeitpunkt ist besser planbar",
+					"Schwangerschaften begleiten wir enger"
 				],
 				paragraphs: [
-					"Kurz: weniger Stress für die Herde, mehr Ruhe für uns."
+					"Kurz: weniger Stress für die Herde und mehr Ruhe im Ablauf."
 				]
 			}
-		],
-		cta: {
-			label: "Mehr zur Stall-Digitalisierung",
-			href: "/#hof"
-		}
+		]
 	},
 	{
 		slug: "fendt-516-vario-gen3",
@@ -62,31 +58,27 @@ export const blogPosts: BlogPost[] = [
 		category: "Maschinen",
 		readTime: "3 Min.",
 		status: "Live",
-		summary: "Weshalb der neue 516 Gen3 Kunstdünger präziser streut, wie uns die Spurführung hilft und warum der alte 516 S4 gehen musste.",
+		summary: "Der neue 516 Gen3 streut präziser, fährt saubere Spuren und spart Überlappungen. So arbeiten wir effizienter auf dem Feld.",
 		heroImage: "/images/blog/fendt-516-vario-gen3.webp",
 		heroAlt: "Fendt 516 Vario Gen3 auf dem Grünland",
 		content: [
 			{
 				paragraphs: [
-					"Der 516 Gen3 löst unseren 516 S4 ab. Hauptgrund: Kunstdünger streuen wir jetzt mit Spurführung exakt und sparen Überlappungen.",
-					"Auf dem Feld legt er dank VarioGuide perfekte Bahnen hin – wir kontrollieren nur noch Ausbringmenge und Streutabelle."
+					"Der 516 Gen3 löst unseren 516 S4 ab. Hauptgrund: Kunstdünger streuen wir jetzt mit Spurführung exakt und vermeiden Überlappungen.",
+					"Auf dem Feld hält er die Spur automatisch. Wir konzentrieren uns auf Ausbringmenge und Streutabellen."
 				]
 			},
 			{
-				heading: "Erste Eindrücke",
+				heading: "Erste Eindrücke im Alltag",
 				list: [
-					"Spurführung spart Überlappungen – Dünger & Diesel bleiben im Soll",
-					"Terminal merkt sich Flächen & Einstellungen – Streupläne schneller abgearbeitet",
-					"Digitales Serviceheft zeigt Betriebsstunden & Wartungen – wir planen Werkstattzeiten besser"
+					"Spurführung spart Dünger und Diesel",
+					"Terminal merkt sich Flächen und Einstellungen",
+					"Serviceheft zeigt Stunden und Wartungen übersichtlich"
 				],
 				paragraphs: [
-					"Wer den 516 live sehen will: meldet euch, Mitfahren bei Dünge- oder Transportarbeiten ist nach Absprache möglich."
+					"Mitfahren bei Dünge- oder Transportarbeiten ist nach Absprache möglich."
 				]
 			}
-		],
-		cta: {
-			label: "Maschinen anfragen",
-			href: "/#hof"
-		}
+		]
 	}
 ];
