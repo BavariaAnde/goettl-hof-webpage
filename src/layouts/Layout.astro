@@ -57,26 +57,29 @@ const shareImage = `${siteUrl}/images/hof-panorama-sommer.webp`;
 		) : null}
 		<meta name="google-site-verification" content="x5y1DFHNc_uxCcfaeaOx-FitVM5GWp-4mBQwJ6c9gkU" />
 
-		<script type="application/ld+json">{JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "Farm",
-			"name": "Göttl Hof",
-			"url": siteUrl,
-			"image": shareImage,
-			"address": {
-				"@type": "PostalAddress",
-				"streetAddress": "Oberbubach 1a",
-				"postalCode": "94439",
-				"addressLocality": "Roßbach",
-				"addressCountry": "DE"
-			},
-			"contactPoint": [{
-				"@type": "ContactPoint",
-				"contactType": "customer service",
-				"telephone": "+4985641268",
-				"email": "info@goettl-oberbubach.de"
-			}]
-		})}</script>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "Farm",
+				"name": "Göttl Hof",
+				"url": siteUrl,
+				"image": shareImage,
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "Oberbubach 1a",
+					"postalCode": "94439",
+					"addressLocality": "Roßbach",
+					"addressCountry": "DE"
+				},
+				"contactPoint": [{
+					"@type": "ContactPoint",
+					"contactType": "customer service",
+					"telephone": "+4985641268",
+					"email": "info@goettl-oberbubach.de"
+				}]
+			})}
+		></script>
 		<!-- Dark mode: apply before render to avoid flash -->
 		<script is:inline>
 			(function() {
