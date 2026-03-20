@@ -7,9 +7,13 @@ const baseUrl = (import.meta.env.BASE_URL ?? "").replace(/\/$/, "");
 const asset = (path: string) => `${baseUrl}/${path.replace(/^\/+/ , "")}`;
 const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?? ""));
 ---
-<Layout title="Blog & Aktuelles – Göttl Hof" description="Aktuelle Themen rund um Hofleben, Ausbildung und Maschinen.">
+<Layout
+	title="Blog & Aktuelles – Göttl Hof"
+	description="Aktuelle Themen rund um Hofleben, Ausbildung und Maschinen."
+	canonicalPath="/blog/"
+>
 	<Nav />
-	<section class="blog-page" data-animate="fade">
+	<main id="page-content" class="blog-page" data-animate="fade">
 		<header class="blog-page__head" data-animate="fade">
 			<p class="eyebrow">Aktuelles</p>
 			<h1>Blog &amp; Einblicke</h1>
@@ -47,7 +51,7 @@ const publishedPosts = blogPosts.filter((post) => !/entwurf/i.test(post.status ?
 				</article>
 			))}
 		</div>
-	</section>
+	</main>
 
 	<style>
 	.blog-page {

@@ -25,9 +25,11 @@ if (!post) {
 	preloadImage={asset(post.heroImage)}
 	preloadImageType="image/webp"
 	preloadImageSizes="100vw"
+	canonicalPath={`/blog/${post.slug}/`}
+	ogType="article"
 >
 	<Nav />
-	<article class="blog-post" data-animate="fade">
+	<article id="page-content" class="blog-post" data-animate="fade">
 		<div class="blog-post__hero">
 			<p class="blog-post__category">{post.category}</p>
 			<h1>{post.title}</h1>

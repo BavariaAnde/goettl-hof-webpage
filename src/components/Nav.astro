@@ -5,6 +5,8 @@ interface Props {
 const { isHome = false } = Astro.props as Props;
 const prefix = isHome ? "" : "/";
 const sectionHref = (id: string) => `${prefix}#${id}`;
+const pathname = Astro.url.pathname;
+const isBlogPage = pathname === "/blog/" || pathname.startsWith("/blog/");
 ---
 <nav class="site-nav" aria-label="Hauptnavigation">
 	<div class="nav__inner">
@@ -29,12 +31,29 @@ const sectionHref = (id: string) => `${prefix}#${id}`;
 	<ul class="nav__links" role="list">
 			<li><a href={sectionHref("hof")} class="nav__link">Hof &amp; Technik</a></li>
 			<li><a href={sectionHref("ausbildung")} class="nav__link">Ausbildung</a></li>
-			<li><a href="/blog/" class="nav__link">Blog</a></li>
+			<li><a href="/blog/" class={`nav__link${isBlogPage ? " nav__link--active" : ""}`} aria-current={isBlogPage ? "page" : undefined}>Blog</a></li>
 			<li><a href={sectionHref("anfahrt")} class="nav__link">Anfahrt</a></li>
 			<li><a href={sectionHref("contact")} class="nav__link nav__link--cta">Kontakt</a></li>
 		</ul>
 	</div>
 </nav>
+
+<script is:inline>
+	(() => {
+		const toggle = document.getElementById('nav-toggle');
+		if (!(toggle instanceof HTMLInputElement)) return;
+
+		document.querySelectorAll('.nav__links a').forEach((link) => {
+			link.addEventListener('click', () => {
+				toggle.checked = false;
+			});
+		});
+
+		window.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') toggle.checked = false;
+		});
+	})();
+</script>
 
 <style>
 .site-nav {
@@ -126,6 +145,11 @@ const sectionHref = (id: string) => `${prefix}#${id}`;
 }
 .nav__link:hover { color: var(--text); background: var(--bg-soft); }
 
+.nav__link--active {
+	color: var(--text);
+	background: var(--bg-soft);
+}
+
 .nav__link--cta {
 	background: var(--accent);
 	color: #fff !important;
@@ -199,6 +223,9 @@ const sectionHref = (id: string) => `${prefix}#${id}`;
 		padding: 0.75rem 1rem;
 		font-size: 1rem;
 		border-radius: 10px;
+	}
+	.nav__link--active {
+		background: var(--bg-strong);
 	}
 	.nav__link--cta { margin-top: 0.5rem; justify-content: center; }
 }

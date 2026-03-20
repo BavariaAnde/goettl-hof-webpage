@@ -50,35 +50,5 @@ export const blogPosts: BlogPost[] = [
 				]
 			}
 		]
-	},
-	{
-		slug: "fendt-516-vario-gen3",
-		title: "Neuer Fendt 516 Vario Gen3 im Einsatz",
-		date: "18. Februar 2026",
-		category: "Maschinen",
-		readTime: "3 Min.",
-		status: "Live",
-		summary: "Der neue 516 Gen3 streut präziser, fährt saubere Spuren und spart Überlappungen. So arbeiten wir effizienter auf dem Feld.",
-		heroImage: "/images/blog/fendt-516-vario-gen3.webp",
-		heroAlt: "Fendt 516 Vario Gen3 auf dem Grünland",
-		content: [
-			{
-				paragraphs: [
-					"Der 516 Gen3 löst unseren 516 S4 ab. Hauptgrund: Kunstdünger streuen wir jetzt mit Spurführung exakt und vermeiden Überlappungen.",
-					"Auf dem Feld hält er die Spur automatisch. Wir konzentrieren uns auf Ausbringmenge und Streutabellen."
-				]
-			},
-			{
-				heading: "Erste Eindrücke im Alltag",
-				list: [
-					"Spurführung spart Dünger und Diesel",
-					"Terminal merkt sich Flächen und Einstellungen",
-					"Serviceheft zeigt Stunden und Wartungen übersichtlich"
-				],
-				paragraphs: [
-					"Mitfahren bei Dünge- oder Transportarbeiten ist nach Absprache möglich."
-				]
-			}
-		]
 	}
 ];
